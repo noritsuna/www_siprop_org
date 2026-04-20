@@ -1,0 +1,14 @@
+org.siprop.prototype.j2se
+org.siprop.prototype.j2se.b2bua
+org.siprop.prototype.j2se.b2bua.impl
+org.siprop.prototype.j2se.b2bua.util
+org.siprop.prototype.j2se.message
+org.siprop.prototype.j2se.message.impl
+org.siprop.prototype.j2se.stack
+org.siprop.prototype.j2se.stack.impl
+org.siprop.prototype.j2se.stack.util
+org.siprop.prototype.j2se.transport
+org.siprop.prototype.j2se.transport.impl
+org.siprop.prototype.j2se.ua
+org.siprop.prototype.j2se.ua.impl
+org.siprop.prototype.j2se.ua.util
