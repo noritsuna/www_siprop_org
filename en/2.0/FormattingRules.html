@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>FormattingRules</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <link href="data:text/css,%2Emarkdown%2Dbody%20%7B%0A%2D%2Dbase%2Dsize%2D16%3A%201rem%3B%0A%2D%2Dbase%2Dsize%2D24%3A%201%2E5rem%3B%0A%2D%2Dbase%2Dsize%2D4%3A%200%2E25rem%3B%0A%2D%2Dbase%2Dsize%2D40%3A%202%2E5rem%3B%0A%2D%2Dbase%2Dsize%2D8%3A%200%2E5rem%3B%0A%2D%2Dbase%2Dtext%2Dweight%2Dmedium%3A%20500%3B%0A%2D%2Dbase%2Dtext%2Dweight%2Dnormal%3A%20400%3B%0A%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%3A%20600%3B%0A%2D%2DfontStack%2Dmonospace%3A%20ui%2Dmonospace%2C%20SFMono%2DRegular%2C%20SF%20Mono%2C%20Menlo%2C%20Consolas%2C%20Liberation%20Mono%2C%20monospace%3B%0A%2D%2DfontStack%2DsansSerif%3A%20%2Dapple%2Dsystem%2C%20BlinkMacSystemFont%2C%20%22Segoe%20UI%22%2C%20%22Noto%20Sans%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%2C%20%22Apple%20Color%20Emoji%22%2C%20%22Segoe%20UI%20Emoji%22%3B%0A%2D%2DfgColor%2Daccent%3A%20Highlight%3B%0A%7D%0A%40media%20%28prefers%2Dcolor%2Dscheme%3A%20dark%29%20%7B%0A%2Emarkdown%2Dbody%2C%20%5Bdata%2Dtheme%3D%22dark%22%5D%20%7B%0A%0Acolor%2Dscheme%3A%20dark%3B%0A%2D%2DfgColor%2Daccent%3A%20%234493f8%3B%0A%2D%2DbgColor%2Dattention%2Dmuted%3A%20%23bb800926%3B%0A%2D%2DbgColor%2Ddefault%3A%20%230d1117%3B%0A%2D%2DbgColor%2Dmuted%3A%20%23151b23%3B%0A%2D%2DbgColor%2Dneutral%2Dmuted%3A%20%23656c7633%3B%0A%2D%2DborderColor%2Daccent%2Demphasis%3A%20%231f6feb%3B%0A%2D%2DborderColor%2Dattention%2Demphasis%3A%20%239e6a03%3B%0A%2D%2DborderColor%2Ddanger%2Demphasis%3A%20%23da3633%3B%0A%2D%2DborderColor%2Ddefault%3A%20%233d444d%3B%0A%2D%2DborderColor%2Ddone%2Demphasis%3A%20%238957e5%3B%0A%2D%2DborderColor%2Dsuccess%2Demphasis%3A%20%23238636%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dangle%3A%20%239198a1%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dunmatched%3A%20%23f85149%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dbg%3A%20%23b62324%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dtext%3A%20%23f0f6fc%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcomment%3A%20%239198a1%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%3A%20%2379c0ff%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%2Dother%2Dreference%2Dlink%3A%20%23a5d6ff%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%3A%20%23d2a8ff%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%2Dtag%3A%20%237ee787%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dkeyword%3A%20%23ff7b72%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dbold%3A%20%23f0f6fc%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dbg%3A%20%235a1e02%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dtext%3A%20%23ffdfb6%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dbg%3A%20%2367060c%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dtext%3A%20%23ffdcd7%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dheading%3A%20%231f6feb%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dbg%3A%20%231158c7%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dtext%3A%20%23f0f6fc%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dbg%3A%20%23033a16%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dtext%3A%20%23aff5b4%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ditalic%3A%20%23f0f6fc%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dlist%3A%20%23f2cc60%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmeta%2Ddiff%2Drange%3A%20%23d2a8ff%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstorage%2Dmodifier%2Dimport%3A%20%23f0f6fc%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%3A%20%23a5d6ff%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%2Dregexp%3A%20%237ee787%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dsublimelinter%2Dgutter%2Dmark%3A%20%233d444d%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dvariable%3A%20%23ffa657%3B%0A%2D%2DfgColor%2Dattention%3A%20%23d29922%3B%0A%2D%2DfgColor%2Ddanger%3A%20%23f85149%3B%0A%2D%2DfgColor%2Ddefault%3A%20%23f0f6fc%3B%0A%2D%2DfgColor%2Ddone%3A%20%23ab7df8%3B%0A%2D%2DfgColor%2Dmuted%3A%20%239198a1%3B%0A%2D%2DfgColor%2Dsuccess%3A%20%233fb950%3B%0A%2D%2DborderColor%2Dmuted%3A%20%233d444db3%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dbg%3A%20var%28%2D%2DbgColor%2Ddanger%2Dmuted%29%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dtext%3A%20var%28%2D%2DfgColor%2Ddanger%29%3B%0A%2D%2Dfocus%2DoutlineColor%3A%20var%28%2D%2DborderColor%2Daccent%2Demphasis%29%3B%0A%2D%2DborderColor%2Dneutral%2Dmuted%3A%20var%28%2D%2DborderColor%2Dmuted%29%3B%0A%7D%0A%7D%0A%40media%20%28prefers%2Dcolor%2Dscheme%3A%20light%29%20%7B%0A%2Emarkdown%2Dbody%2C%20%5Bdata%2Dtheme%3D%22light%22%5D%20%7B%0A%0Acolor%2Dscheme%3A%20light%3B%0A%2D%2DfgColor%2Ddanger%3A%20%23d1242f%3B%0A%2D%2DbgColor%2Dattention%2Dmuted%3A%20%23fff8c5%3B%0A%2D%2DbgColor%2Dmuted%3A%20%23f6f8fa%3B%0A%2D%2DbgColor%2Dneutral%2Dmuted%3A%20%23818b981f%3B%0A%2D%2DborderColor%2Daccent%2Demphasis%3A%20%230969da%3B%0A%2D%2DborderColor%2Dattention%2Demphasis%3A%20%239a6700%3B%0A%2D%2DborderColor%2Ddanger%2Demphasis%3A%20%23cf222e%3B%0A%2D%2DborderColor%2Ddefault%3A%20%23d1d9e0%3B%0A%2D%2DborderColor%2Ddone%2Demphasis%3A%20%238250df%3B%0A%2D%2DborderColor%2Dsuccess%2Demphasis%3A%20%231a7f37%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dangle%3A%20%2359636e%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dunmatched%3A%20%2382071e%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dbg%3A%20%23cf222e%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dtext%3A%20%23f6f8fa%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcomment%3A%20%2359636e%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%3A%20%230550ae%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%2Dother%2Dreference%2Dlink%3A%20%230a3069%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%3A%20%236639ba%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%2Dtag%3A%20%230550ae%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dtext%3A%20var%28%2D%2DfgColor%2Ddanger%29%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dkeyword%3A%20%23cf222e%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dbg%3A%20%23ffd8b5%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dtext%3A%20%23953800%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dbg%3A%20%23ffebe9%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dtext%3A%20%2382071e%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dheading%3A%20%230550ae%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dbg%3A%20%230550ae%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dtext%3A%20%23d1d9e0%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dbg%3A%20%23dafbe1%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dtext%3A%20%23116329%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dlist%3A%20%233b2300%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmeta%2Ddiff%2Drange%3A%20%238250df%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%3A%20%230a3069%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%2Dregexp%3A%20%23116329%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dsublimelinter%2Dgutter%2Dmark%3A%20%23818b98%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dvariable%3A%20%23953800%3B%0A%2D%2DfgColor%2Daccent%3A%20%230969da%3B%0A%2D%2DfgColor%2Dattention%3A%20%239a6700%3B%0A%2D%2DfgColor%2Ddone%3A%20%238250df%3B%0A%2D%2DfgColor%2Dmuted%3A%20%2359636e%3B%0A%2D%2DfgColor%2Dsuccess%3A%20%231a7f37%3B%0A%2D%2DbgColor%2Ddefault%3A%20%23ffffff%3B%0A%2D%2DborderColor%2Dmuted%3A%20%23d1d9e0b3%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dbg%3A%20var%28%2D%2DbgColor%2Ddanger%2Dmuted%29%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dbold%3A%20%231f2328%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ditalic%3A%20%231f2328%3B%0A%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstorage%2Dmodifier%2Dimport%3A%20%231f2328%3B%0A%2D%2DfgColor%2Ddefault%3A%20%231f2328%3B%0A%2D%2Dfocus%2DoutlineColor%3A%20var%28%2D%2DborderColor%2Daccent%2Demphasis%29%3B%0A%2D%2DborderColor%2Dneutral%2Dmuted%3A%20var%28%2D%2DborderColor%2Dmuted%29%3B%0A%7D%0A%7D%0A%2Emarkdown%2Dbody%20%7B%0A%0A%0A%0A%0A%0A%2Dms%2Dtext%2Dsize%2Dadjust%3A%20100%25%3B%0A%2Dwebkit%2Dtext%2Dsize%2Dadjust%3A%20100%25%3B%0Amargin%3A%200%3B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dnormal%2C%20400%29%3B%0Acolor%3A%20var%28%2D%2DfgColor%2Ddefault%29%3B%0Abackground%2Dcolor%3A%20var%28%2D%2DbgColor%2Ddefault%29%3B%0Afont%2Dfamily%3A%20var%28%2D%2DfontStack%2DsansSerif%2C%20%2Dapple%2Dsystem%2C%20BlinkMacSystemFont%2C%20%22Segoe%20UI%22%2C%20%22Noto%20Sans%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%2C%20%22Apple%20Color%20Emoji%22%2C%20%22Segoe%20UI%20Emoji%22%29%3B%0Afont%2Dsize%3A%2016px%3B%0Aline%2Dheight%3A%201%2E5%3B%0Aword%2Dwrap%3A%20break%2Dword%3B%0A%7D%0A%2Emarkdown%2Dbody%20a%20%7B%0Atext%2Ddecoration%3A%20underline%3B%0Atext%2Dunderline%2Doffset%3A%20%2E2rem%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Eocticon%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Afill%3A%20currentColor%3B%0Avertical%2Dalign%3A%20text%2Dbottom%3B%0A%7D%0A%2Emarkdown%2Dbody%20h1%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%0A%2Emarkdown%2Dbody%20h2%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%0A%2Emarkdown%2Dbody%20h3%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%0A%2Emarkdown%2Dbody%20h4%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%0A%2Emarkdown%2Dbody%20h5%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%2C%0A%2Emarkdown%2Dbody%20h6%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%3Abefore%20%7B%0Awidth%3A%2016px%3B%0Aheight%3A%2016px%3B%0Acontent%3A%20%27%20%27%3B%0Adisplay%3A%20inline%2Dblock%3B%0Abackground%2Dcolor%3A%20currentColor%3B%0A%2Dwebkit%2Dmask%2Dimage%3A%20url%28%22data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%20version%3D%271%2E1%27%20aria%2Dhidden%3D%27true%27%3E%3Cpath%20fill%2Drule%3D%27evenodd%27%20d%3D%27M7%2E775%203%2E275a%2E75%2E75%200%20001%2E06%201%2E06l1%2E25%2D1%2E25a2%202%200%20112%2E83%202%2E83l%2D2%2E5%202%2E5a2%202%200%2001%2D2%2E83%200%20%2E75%2E75%200%2000%2D1%2E06%201%2E06%203%2E5%203%2E5%200%20004%2E95%200l2%2E5%2D2%2E5a3%2E5%203%2E5%200%2000%2D4%2E95%2D4%2E95l%2D1%2E25%201%2E25zm%2D4%2E69%209%2E64a2%202%200%20010%2D2%2E83l2%2E5%2D2%2E5a2%202%200%20012%2E83%200%20%2E75%2E75%200%20001%2E06%2D1%2E06%203%2E5%203%2E5%200%2000%2D4%2E95%200l%2D2%2E5%202%2E5a3%2E5%203%2E5%200%20004%2E95%204%2E95l1%2E25%2D1%2E25a%2E75%2E75%200%2000%2D1%2E06%2D1%2E06l%2D1%2E25%201%2E25a2%202%200%2001%2D2%2E83%200z%27%3E%3C%2Fpath%3E%3C%2Fsvg%3E%22%29%3B%0Amask%2Dimage%3A%20url%28%22data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%20version%3D%271%2E1%27%20aria%2Dhidden%3D%27true%27%3E%3Cpath%20fill%2Drule%3D%27evenodd%27%20d%3D%27M7%2E775%203%2E275a%2E75%2E75%200%20001%2E06%201%2E06l1%2E25%2D1%2E25a2%202%200%20112%2E83%202%2E83l%2D2%2E5%202%2E5a2%202%200%2001%2D2%2E83%200%20%2E75%2E75%200%2000%2D1%2E06%201%2E06%203%2E5%203%2E5%200%20004%2E95%200l2%2E5%2D2%2E5a3%2E5%203%2E5%200%2000%2D4%2E95%2D4%2E95l%2D1%2E25%201%2E25zm%2D4%2E69%209%2E64a2%202%200%20010%2D2%2E83l2%2E5%2D2%2E5a2%202%200%20012%2E83%200%20%2E75%2E75%200%20001%2E06%2D1%2E06%203%2E5%203%2E5%200%2000%2D4%2E95%200l%2D2%2E5%202%2E5a3%2E5%203%2E5%200%20004%2E95%204%2E95l1%2E25%2D1%2E25a%2E75%2E75%200%2000%2D1%2E06%2D1%2E06l%2D1%2E25%201%2E25a2%202%200%2001%2D2%2E83%200z%27%3E%3C%2Fpath%3E%3C%2Fsvg%3E%22%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20details%2C%0A%2Emarkdown%2Dbody%20figcaption%2C%0A%2Emarkdown%2Dbody%20figure%20%7B%0Adisplay%3A%20block%3B%0A%7D%0A%2Emarkdown%2Dbody%20summary%20%7B%0Adisplay%3A%20list%2Ditem%3B%0A%7D%0A%2Emarkdown%2Dbody%20%5Bhidden%5D%20%7B%0Adisplay%3A%20none%20%21important%3B%0A%7D%0A%2Emarkdown%2Dbody%20a%20%7B%0Abackground%2Dcolor%3A%20rgba%280%2C0%2C0%2C0%29%3B%0Acolor%3A%20var%28%2D%2DfgColor%2Daccent%29%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20abbr%5Btitle%5D%20%7B%0Aborder%2Dbottom%3A%20none%3B%0A%2Dwebkit%2Dtext%2Ddecoration%3A%20underline%20dotted%3B%0Atext%2Ddecoration%3A%20underline%20dotted%3B%0A%7D%0A%2Emarkdown%2Dbody%20b%2C%0A%2Emarkdown%2Dbody%20strong%20%7B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C%20600%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20dfn%20%7B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%2Emarkdown%2Dbody%20h1%20%7B%0Amargin%3A%20%2E67em%200%3B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C%20600%29%3B%0Apadding%2Dbottom%3A%20%2E3em%3B%0Afont%2Dsize%3A%202em%3B%0Aborder%2Dbottom%3A%201px%20solid%20var%28%2D%2DborderColor%2Dmuted%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20mark%20%7B%0Abackground%2Dcolor%3A%20var%28%2D%2DbgColor%2Dattention%2Dmuted%29%3B%0Acolor%3A%20var%28%2D%2DfgColor%2Ddefault%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20small%20%7B%0Afont%2Dsize%3A%2090%25%3B%0A%7D%0A%2Emarkdown%2Dbody%20sub%2C%0A%2Emarkdown%2Dbody%20sup%20%7B%0Afont%2Dsize%3A%2075%25%3B%0Aline%2Dheight%3A%200%3B%0Aposition%3A%20relative%3B%0Avertical%2Dalign%3A%20baseline%3B%0A%7D%0A%2Emarkdown%2Dbody%20sub%20%7B%0Abottom%3A%20%2D0%2E25em%3B%0A%7D%0A%2Emarkdown%2Dbody%20sup%20%7B%0Atop%3A%20%2D0%2E5em%3B%0A%7D%0A%2Emarkdown%2Dbody%20img%20%7B%0Aborder%2Dstyle%3A%20none%3B%0Amax%2Dwidth%3A%20100%25%3B%0Abox%2Dsizing%3A%20content%2Dbox%3B%0A%7D%0A%2Emarkdown%2Dbody%20code%2C%0A%2Emarkdown%2Dbody%20kbd%2C%0A%2Emarkdown%2Dbody%20pre%2C%0A%2Emarkdown%2Dbody%20samp%20%7B%0Afont%2Dfamily%3A%20monospace%3B%0Afont%2Dsize%3A%201em%3B%0A%7D%0A%2Emarkdown%2Dbody%20figure%20%7B%0Amargin%3A%201em%20var%28%2D%2Dbase%2Dsize%2D40%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20hr%20%7B%0Abox%2Dsizing%3A%20content%2Dbox%3B%0Aoverflow%3A%20hidden%3B%0Abackground%3A%20rgba%280%2C0%2C0%2C0%29%3B%0Aborder%2Dbottom%3A%201px%20solid%20var%28%2D%2DborderColor%2Dmuted%29%3B%0Aheight%3A%20%2E25em%3B%0Apadding%3A%200%3B%0Amargin%3A%20var%28%2D%2Dbase%2Dsize%2D24%29%200%3B%0Abackground%2Dcolor%3A%20var%28%2D%2DborderColor%2Ddefault%29%3B%0Aborder%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20input%20%7B%0Afont%3A%20inherit%3B%0Amargin%3A%200%3B%0Aoverflow%3A%20visible%3B%0Afont%2Dfamily%3A%20inherit%3B%0Afont%2Dsize%3A%20inherit%3B%0Aline%2Dheight%3A%20inherit%3B%0A%7D%0A%2Emarkdown%2Dbody%20%5Btype%3Dbutton%5D%2C%0A%2Emarkdown%2Dbody%20%5Btype%3Dreset%5D%2C%0A%2Emarkdown%2Dbody%20%5Btype%3Dsubmit%5D%20%7B%0A%2Dwebkit%2Dappearance%3A%20button%3B%0Aappearance%3A%20button%3B%0A%7D%0A%2Emarkdown%2Dbody%20%5Btype%3Dcheckbox%5D%2C%0A%2Emarkdown%2Dbody%20%5Btype%3Dradio%5D%20%7B%0Abox%2Dsizing%3A%20border%2Dbox%3B%0Apadding%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20%5Btype%3Dnumber%5D%3A%3A%2Dwebkit%2Dinner%2Dspin%2Dbutton%2C%0A%2Emarkdown%2Dbody%20%5Btype%3Dnumber%5D%3A%3A%2Dwebkit%2Douter%2Dspin%2Dbutton%20%7B%0Aheight%3A%20auto%3B%0A%7D%0A%2Emarkdown%2Dbody%20%5Btype%3Dsearch%5D%3A%3A%2Dwebkit%2Dsearch%2Dcancel%2Dbutton%2C%0A%2Emarkdown%2Dbody%20%5Btype%3Dsearch%5D%3A%3A%2Dwebkit%2Dsearch%2Ddecoration%20%7B%0A%2Dwebkit%2Dappearance%3A%20none%3B%0Aappearance%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20%3A%3A%2Dwebkit%2Dinput%2Dplaceholder%20%7B%0Acolor%3A%20inherit%3B%0Aopacity%3A%20%2E54%3B%0A%7D%0A%2Emarkdown%2Dbody%20%3A%3A%2Dwebkit%2Dfile%2Dupload%2Dbutton%20%7B%0A%2Dwebkit%2Dappearance%3A%20button%3B%0Aappearance%3A%20button%3B%0Afont%3A%20inherit%3B%0A%7D%0A%2Emarkdown%2Dbody%20a%3Ahover%20%7B%0Atext%2Ddecoration%3A%20underline%3B%0A%7D%0A%2Emarkdown%2Dbody%20%3A%3Aplaceholder%20%7B%0Acolor%3A%20var%28%2D%2DfgColor%2Dmuted%29%3B%0Aopacity%3A%201%3B%0A%7D%0A%2Emarkdown%2Dbody%20hr%3A%3Abefore%20%7B%0Adisplay%3A%20table%3B%0Acontent%3A%20%22%22%3B%0A%7D%0A%2Emarkdown%2Dbody%20hr%3A%3Aafter%20%7B%0Adisplay%3A%20table%3B%0Aclear%3A%20both%3B%0Acontent%3A%20%22%22%3B%0A%7D%0A%2Emarkdown%2Dbody%20table%20%7B%0Aborder%2Dspacing%3A%200%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0Adisplay%3A%20block%3B%0Awidth%3A%20max%2Dcontent%3B%0Amax%2Dwidth%3A%20100%25%3B%0Aoverflow%3A%20auto%3B%0Afont%2Dvariant%3A%20tabular%2Dnums%3B%0A%7D%0A%2Emarkdown%2Dbody%20td%2C%0A%2Emarkdown%2Dbody%20th%20%7B%0Apadding%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20details%20summary%20%7B%0Acursor%3A%20pointer%3B%0A%7D%0A%2Emarkdown%2Dbody%20a%3Afocus%2C%0A%2Emarkdown%2Dbody%20%5Brole%3Dbutton%5D%3Afocus%2C%0A%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%2C%0A%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%20%7B%0Aoutline%3A%202px%20solid%20var%28%2D%2Dfocus%2DoutlineColor%29%3B%0Aoutline%2Doffset%3A%20%2D2px%3B%0Abox%2Dshadow%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20a%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%0A%2Emarkdown%2Dbody%20%5Brole%3Dbutton%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%0A%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%0A%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%20%7B%0Aoutline%3A%20solid%201px%20rgba%280%2C0%2C0%2C0%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20a%3Afocus%2Dvisible%2C%0A%2Emarkdown%2Dbody%20%5Brole%3Dbutton%5D%3Afocus%2Dvisible%2C%0A%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%2Dvisible%2C%0A%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%2Dvisible%20%7B%0Aoutline%3A%202px%20solid%20var%28%2D%2Dfocus%2DoutlineColor%29%3B%0Aoutline%2Doffset%3A%20%2D2px%3B%0Abox%2Dshadow%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20a%3Anot%28%5Bclass%5D%29%3Afocus%2C%0A%2Emarkdown%2Dbody%20a%3Anot%28%5Bclass%5D%29%3Afocus%2Dvisible%2C%0A%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%2C%0A%2Emarkdown%2Dbody%20input%5Btype%3Dradio%5D%3Afocus%2Dvisible%2C%0A%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%2C%0A%2Emarkdown%2Dbody%20input%5Btype%3Dcheckbox%5D%3Afocus%2Dvisible%20%7B%0Aoutline%2Doffset%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20kbd%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%3A%20var%28%2D%2Dbase%2Dsize%2D4%29%3B%0Afont%3A%2011px%20var%28%2D%2DfontStack%2Dmonospace%2C%20ui%2Dmonospace%2C%20SFMono%2DRegular%2C%20SF%20Mono%2C%20Menlo%2C%20Consolas%2C%20Liberation%20Mono%2C%20monospace%29%3B%0Aline%2Dheight%3A%2010px%3B%0Acolor%3A%20var%28%2D%2DfgColor%2Ddefault%29%3B%0Avertical%2Dalign%3A%20middle%3B%0Abackground%2Dcolor%3A%20var%28%2D%2DbgColor%2Dmuted%29%3B%0Aborder%3A%20solid%201px%20var%28%2D%2DborderColor%2Dneutral%2Dmuted%29%3B%0Aborder%2Dbottom%2Dcolor%3A%20var%28%2D%2DborderColor%2Dneutral%2Dmuted%29%3B%0Aborder%2Dradius%3A%206px%3B%0Abox%2Dshadow%3A%20inset%200%20%2D1px%200%20var%28%2D%2DborderColor%2Dneutral%2Dmuted%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20h1%2C%0A%2Emarkdown%2Dbody%20h2%2C%0A%2Emarkdown%2Dbody%20h3%2C%0A%2Emarkdown%2Dbody%20h4%2C%0A%2Emarkdown%2Dbody%20h5%2C%0A%2Emarkdown%2Dbody%20h6%20%7B%0Amargin%2Dtop%3A%20var%28%2D%2Dbase%2Dsize%2D24%29%3B%0Amargin%2Dbottom%3A%20var%28%2D%2Dbase%2Dsize%2D16%29%3B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C%20600%29%3B%0Aline%2Dheight%3A%201%2E25%3B%0A%7D%0A%2Emarkdown%2Dbody%20h2%20%7B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C%20600%29%3B%0Apadding%2Dbottom%3A%20%2E3em%3B%0Afont%2Dsize%3A%201%2E5em%3B%0Aborder%2Dbottom%3A%201px%20solid%20var%28%2D%2DborderColor%2Dmuted%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20h3%20%7B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C%20600%29%3B%0Afont%2Dsize%3A%201%2E25em%3B%0A%7D%0A%2Emarkdown%2Dbody%20h4%20%7B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C%20600%29%3B%0Afont%2Dsize%3A%201em%3B%0A%7D%0A%2Emarkdown%2Dbody%20h5%20%7B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C%20600%29%3B%0Afont%2Dsize%3A%20%2E875em%3B%0A%7D%0A%2Emarkdown%2Dbody%20h6%20%7B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C%20600%29%3B%0Afont%2Dsize%3A%20%2E85em%3B%0Acolor%3A%20var%28%2D%2DfgColor%2Dmuted%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20p%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%2010px%3B%0A%7D%0A%2Emarkdown%2Dbody%20blockquote%20%7B%0Amargin%3A%200%3B%0Apadding%3A%200%201em%3B%0Acolor%3A%20var%28%2D%2DfgColor%2Dmuted%29%3B%0Aborder%2Dleft%3A%20%2E25em%20solid%20var%28%2D%2DborderColor%2Ddefault%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20ul%2C%0A%2Emarkdown%2Dbody%20ol%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0Apadding%2Dleft%3A%202em%3B%0A%7D%0A%2Emarkdown%2Dbody%20ol%20ol%2C%0A%2Emarkdown%2Dbody%20ul%20ol%20%7B%0Alist%2Dstyle%2Dtype%3A%20lower%2Droman%3B%0A%7D%0A%2Emarkdown%2Dbody%20ul%20ul%20ol%2C%0A%2Emarkdown%2Dbody%20ul%20ol%20ol%2C%0A%2Emarkdown%2Dbody%20ol%20ul%20ol%2C%0A%2Emarkdown%2Dbody%20ol%20ol%20ol%20%7B%0Alist%2Dstyle%2Dtype%3A%20lower%2Dalpha%3B%0A%7D%0A%2Emarkdown%2Dbody%20dd%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20tt%2C%0A%2Emarkdown%2Dbody%20code%2C%0A%2Emarkdown%2Dbody%20samp%20%7B%0Afont%2Dfamily%3A%20var%28%2D%2DfontStack%2Dmonospace%2C%20ui%2Dmonospace%2C%20SFMono%2DRegular%2C%20SF%20Mono%2C%20Menlo%2C%20Consolas%2C%20Liberation%20Mono%2C%20monospace%29%3B%0Afont%2Dsize%3A%2012px%3B%0A%7D%0A%2Emarkdown%2Dbody%20pre%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0Afont%2Dfamily%3A%20var%28%2D%2DfontStack%2Dmonospace%2C%20ui%2Dmonospace%2C%20SFMono%2DRegular%2C%20SF%20Mono%2C%20Menlo%2C%20Consolas%2C%20Liberation%20Mono%2C%20monospace%29%3B%0Afont%2Dsize%3A%2012px%3B%0Aword%2Dwrap%3A%20normal%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Eocticon%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Aoverflow%3A%20visible%20%21important%3B%0Avertical%2Dalign%3A%20text%2Dbottom%3B%0Afill%3A%20currentColor%3B%0A%7D%0A%2Emarkdown%2Dbody%20input%3A%3A%2Dwebkit%2Douter%2Dspin%2Dbutton%2C%0A%2Emarkdown%2Dbody%20input%3A%3A%2Dwebkit%2Dinner%2Dspin%2Dbutton%20%7B%0Amargin%3A%200%3B%0Aappearance%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emr%2D2%20%7B%0Amargin%2Dright%3A%20var%28%2D%2Dbase%2Dsize%2D8%2C%208px%29%20%21important%3B%0A%7D%0A%2Emarkdown%2Dbody%3A%3Abefore%20%7B%0Adisplay%3A%20table%3B%0Acontent%3A%20%22%22%3B%0A%7D%0A%2Emarkdown%2Dbody%3A%3Aafter%20%7B%0Adisplay%3A%20table%3B%0Aclear%3A%20both%3B%0Acontent%3A%20%22%22%3B%0A%7D%0A%2Emarkdown%2Dbody%3E%2A%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%20%21important%3B%0A%7D%0A%2Emarkdown%2Dbody%3E%2A%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%20%21important%3B%0A%7D%0A%2Emarkdown%2Dbody%20a%3Anot%28%5Bhref%5D%29%20%7B%0Acolor%3A%20inherit%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Eabsent%20%7B%0Acolor%3A%20var%28%2D%2DfgColor%2Ddanger%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Eanchor%20%7B%0Afloat%3A%20left%3B%0Apadding%2Dright%3A%20var%28%2D%2Dbase%2Dsize%2D4%29%3B%0Amargin%2Dleft%3A%20%2D20px%3B%0Aline%2Dheight%3A%201%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Eanchor%3Afocus%20%7B%0Aoutline%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20p%2C%0A%2Emarkdown%2Dbody%20blockquote%2C%0A%2Emarkdown%2Dbody%20ul%2C%0A%2Emarkdown%2Dbody%20ol%2C%0A%2Emarkdown%2Dbody%20dl%2C%0A%2Emarkdown%2Dbody%20table%2C%0A%2Emarkdown%2Dbody%20pre%2C%0A%2Emarkdown%2Dbody%20details%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%20var%28%2D%2Dbase%2Dsize%2D16%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20blockquote%3E%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20blockquote%3E%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20h1%20%2Eocticon%2Dlink%2C%0A%2Emarkdown%2Dbody%20h2%20%2Eocticon%2Dlink%2C%0A%2Emarkdown%2Dbody%20h3%20%2Eocticon%2Dlink%2C%0A%2Emarkdown%2Dbody%20h4%20%2Eocticon%2Dlink%2C%0A%2Emarkdown%2Dbody%20h5%20%2Eocticon%2Dlink%2C%0A%2Emarkdown%2Dbody%20h6%20%2Eocticon%2Dlink%20%7B%0Acolor%3A%20var%28%2D%2DfgColor%2Ddefault%29%3B%0Avertical%2Dalign%3A%20middle%3B%0Avisibility%3A%20hidden%3B%0A%7D%0A%2Emarkdown%2Dbody%20h1%3Ahover%20%2Eanchor%2C%0A%2Emarkdown%2Dbody%20h2%3Ahover%20%2Eanchor%2C%0A%2Emarkdown%2Dbody%20h3%3Ahover%20%2Eanchor%2C%0A%2Emarkdown%2Dbody%20h4%3Ahover%20%2Eanchor%2C%0A%2Emarkdown%2Dbody%20h5%3Ahover%20%2Eanchor%2C%0A%2Emarkdown%2Dbody%20h6%3Ahover%20%2Eanchor%20%7B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20h1%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0A%2Emarkdown%2Dbody%20h2%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0A%2Emarkdown%2Dbody%20h3%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0A%2Emarkdown%2Dbody%20h4%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0A%2Emarkdown%2Dbody%20h5%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0A%2Emarkdown%2Dbody%20h6%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%20%7B%0Avisibility%3A%20visible%3B%0A%7D%0A%2Emarkdown%2Dbody%20h1%20tt%2C%0A%2Emarkdown%2Dbody%20h1%20code%2C%0A%2Emarkdown%2Dbody%20h2%20tt%2C%0A%2Emarkdown%2Dbody%20h2%20code%2C%0A%2Emarkdown%2Dbody%20h3%20tt%2C%0A%2Emarkdown%2Dbody%20h3%20code%2C%0A%2Emarkdown%2Dbody%20h4%20tt%2C%0A%2Emarkdown%2Dbody%20h4%20code%2C%0A%2Emarkdown%2Dbody%20h5%20tt%2C%0A%2Emarkdown%2Dbody%20h5%20code%2C%0A%2Emarkdown%2Dbody%20h6%20tt%2C%0A%2Emarkdown%2Dbody%20h6%20code%20%7B%0Apadding%3A%200%20%2E2em%3B%0Afont%2Dsize%3A%20inherit%3B%0A%7D%0A%2Emarkdown%2Dbody%20summary%20h1%2C%0A%2Emarkdown%2Dbody%20summary%20h2%2C%0A%2Emarkdown%2Dbody%20summary%20h3%2C%0A%2Emarkdown%2Dbody%20summary%20h4%2C%0A%2Emarkdown%2Dbody%20summary%20h5%2C%0A%2Emarkdown%2Dbody%20summary%20h6%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0A%7D%0A%2Emarkdown%2Dbody%20summary%20h1%20%2Eanchor%2C%0A%2Emarkdown%2Dbody%20summary%20h2%20%2Eanchor%2C%0A%2Emarkdown%2Dbody%20summary%20h3%20%2Eanchor%2C%0A%2Emarkdown%2Dbody%20summary%20h4%20%2Eanchor%2C%0A%2Emarkdown%2Dbody%20summary%20h5%20%2Eanchor%2C%0A%2Emarkdown%2Dbody%20summary%20h6%20%2Eanchor%20%7B%0Amargin%2Dleft%3A%20%2D40px%3B%0A%7D%0A%2Emarkdown%2Dbody%20summary%20h1%2C%0A%2Emarkdown%2Dbody%20summary%20h2%20%7B%0Apadding%2Dbottom%3A%200%3B%0Aborder%2Dbottom%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20ul%2Eno%2Dlist%2C%0A%2Emarkdown%2Dbody%20ol%2Eno%2Dlist%20%7B%0Apadding%3A%200%3B%0Alist%2Dstyle%2Dtype%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20ol%5Btype%3D%22a%20s%22%5D%20%7B%0Alist%2Dstyle%2Dtype%3A%20lower%2Dalpha%3B%0A%7D%0A%2Emarkdown%2Dbody%20ol%5Btype%3D%22A%20s%22%5D%20%7B%0Alist%2Dstyle%2Dtype%3A%20upper%2Dalpha%3B%0A%7D%0A%2Emarkdown%2Dbody%20ol%5Btype%3D%22i%20s%22%5D%20%7B%0Alist%2Dstyle%2Dtype%3A%20lower%2Droman%3B%0A%7D%0A%2Emarkdown%2Dbody%20ol%5Btype%3D%22I%20s%22%5D%20%7B%0Alist%2Dstyle%2Dtype%3A%20upper%2Droman%3B%0A%7D%0A%2Emarkdown%2Dbody%20ol%5Btype%3D%221%22%5D%20%7B%0Alist%2Dstyle%2Dtype%3A%20decimal%3B%0A%7D%0A%2Emarkdown%2Dbody%20div%3Eol%3Anot%28%5Btype%5D%29%20%7B%0Alist%2Dstyle%2Dtype%3A%20decimal%3B%0A%7D%0A%2Emarkdown%2Dbody%20ul%20ul%2C%0A%2Emarkdown%2Dbody%20ul%20ol%2C%0A%2Emarkdown%2Dbody%20ol%20ol%2C%0A%2Emarkdown%2Dbody%20ol%20ul%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20li%3Ep%20%7B%0Amargin%2Dtop%3A%20var%28%2D%2Dbase%2Dsize%2D16%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20li%2Bli%20%7B%0Amargin%2Dtop%3A%20%2E25em%3B%0A%7D%0A%2Emarkdown%2Dbody%20dl%20%7B%0Apadding%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20dl%20dt%20%7B%0Apadding%3A%200%3B%0Amargin%2Dtop%3A%20var%28%2D%2Dbase%2Dsize%2D16%29%3B%0Afont%2Dsize%3A%201em%3B%0Afont%2Dstyle%3A%20italic%3B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C%20600%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20dl%20dd%20%7B%0Apadding%3A%200%20var%28%2D%2Dbase%2Dsize%2D16%29%3B%0Amargin%2Dbottom%3A%20var%28%2D%2Dbase%2Dsize%2D16%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20table%20th%20%7B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C%20600%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20table%20th%2C%0A%2Emarkdown%2Dbody%20table%20td%20%7B%0Apadding%3A%206px%2013px%3B%0Aborder%3A%201px%20solid%20var%28%2D%2DborderColor%2Ddefault%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20table%20td%3E%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20table%20tr%20%7B%0Abackground%2Dcolor%3A%20var%28%2D%2DbgColor%2Ddefault%29%3B%0Aborder%2Dtop%3A%201px%20solid%20var%28%2D%2DborderColor%2Dmuted%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20table%20tr%3Anth%2Dchild%282n%29%20%7B%0Abackground%2Dcolor%3A%20var%28%2D%2DbgColor%2Dmuted%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20table%20img%20%7B%0Abackground%2Dcolor%3A%20rgba%280%2C0%2C0%2C0%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20img%5Balign%3Dright%5D%20%7B%0Apadding%2Dleft%3A%2020px%3B%0A%7D%0A%2Emarkdown%2Dbody%20img%5Balign%3Dleft%5D%20%7B%0Apadding%2Dright%3A%2020px%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Eemoji%20%7B%0Amax%2Dwidth%3A%20none%3B%0Avertical%2Dalign%3A%20text%2Dtop%3B%0Abackground%2Dcolor%3A%20rgba%280%2C0%2C0%2C0%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20span%2Eframe%20%7B%0Adisplay%3A%20block%3B%0Aoverflow%3A%20hidden%3B%0A%7D%0A%2Emarkdown%2Dbody%20span%2Eframe%3Espan%20%7B%0Adisplay%3A%20block%3B%0Afloat%3A%20left%3B%0Awidth%3A%20auto%3B%0Apadding%3A%207px%3B%0Amargin%3A%2013px%200%200%3B%0Aoverflow%3A%20hidden%3B%0Aborder%3A%201px%20solid%20var%28%2D%2DborderColor%2Ddefault%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20span%2Eframe%20span%20img%20%7B%0Adisplay%3A%20block%3B%0Afloat%3A%20left%3B%0A%7D%0A%2Emarkdown%2Dbody%20span%2Eframe%20span%20span%20%7B%0Adisplay%3A%20block%3B%0Apadding%3A%205px%200%200%3B%0Aclear%3A%20both%3B%0Acolor%3A%20var%28%2D%2DfgColor%2Ddefault%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20span%2Ealign%2Dcenter%20%7B%0Adisplay%3A%20block%3B%0Aoverflow%3A%20hidden%3B%0Aclear%3A%20both%3B%0A%7D%0A%2Emarkdown%2Dbody%20span%2Ealign%2Dcenter%3Espan%20%7B%0Adisplay%3A%20block%3B%0Amargin%3A%2013px%20auto%200%3B%0Aoverflow%3A%20hidden%3B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%2Emarkdown%2Dbody%20span%2Ealign%2Dcenter%20span%20img%20%7B%0Amargin%3A%200%20auto%3B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%2Emarkdown%2Dbody%20span%2Ealign%2Dright%20%7B%0Adisplay%3A%20block%3B%0Aoverflow%3A%20hidden%3B%0Aclear%3A%20both%3B%0A%7D%0A%2Emarkdown%2Dbody%20span%2Ealign%2Dright%3Espan%20%7B%0Adisplay%3A%20block%3B%0Amargin%3A%2013px%200%200%3B%0Aoverflow%3A%20hidden%3B%0Atext%2Dalign%3A%20right%3B%0A%7D%0A%2Emarkdown%2Dbody%20span%2Ealign%2Dright%20span%20img%20%7B%0Amargin%3A%200%3B%0Atext%2Dalign%3A%20right%3B%0A%7D%0A%2Emarkdown%2Dbody%20span%2Efloat%2Dleft%20%7B%0Adisplay%3A%20block%3B%0Afloat%3A%20left%3B%0Amargin%2Dright%3A%2013px%3B%0Aoverflow%3A%20hidden%3B%0A%7D%0A%2Emarkdown%2Dbody%20span%2Efloat%2Dleft%20span%20%7B%0Amargin%3A%2013px%200%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20span%2Efloat%2Dright%20%7B%0Adisplay%3A%20block%3B%0Afloat%3A%20right%3B%0Amargin%2Dleft%3A%2013px%3B%0Aoverflow%3A%20hidden%3B%0A%7D%0A%2Emarkdown%2Dbody%20span%2Efloat%2Dright%3Espan%20%7B%0Adisplay%3A%20block%3B%0Amargin%3A%2013px%20auto%200%3B%0Aoverflow%3A%20hidden%3B%0Atext%2Dalign%3A%20right%3B%0A%7D%0A%2Emarkdown%2Dbody%20code%2C%0A%2Emarkdown%2Dbody%20tt%20%7B%0Apadding%3A%20%2E2em%20%2E4em%3B%0Amargin%3A%200%3B%0Afont%2Dsize%3A%2085%25%3B%0Awhite%2Dspace%3A%20break%2Dspaces%3B%0Abackground%2Dcolor%3A%20var%28%2D%2DbgColor%2Dneutral%2Dmuted%29%3B%0Aborder%2Dradius%3A%206px%3B%0A%7D%0A%2Emarkdown%2Dbody%20code%20br%2C%0A%2Emarkdown%2Dbody%20tt%20br%20%7B%0Adisplay%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20del%20code%20%7B%0Atext%2Ddecoration%3A%20inherit%3B%0A%7D%0A%2Emarkdown%2Dbody%20samp%20%7B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0A%2Emarkdown%2Dbody%20pre%20code%20%7B%0Afont%2Dsize%3A%20100%25%3B%0A%7D%0A%2Emarkdown%2Dbody%20pre%3Ecode%20%7B%0Apadding%3A%200%3B%0Amargin%3A%200%3B%0Aword%2Dbreak%3A%20normal%3B%0Awhite%2Dspace%3A%20pre%3B%0Abackground%3A%20rgba%280%2C0%2C0%2C0%29%3B%0Aborder%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Ehighlight%20%7B%0Amargin%2Dbottom%3A%20var%28%2D%2Dbase%2Dsize%2D16%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Ehighlight%20pre%20%7B%0Amargin%2Dbottom%3A%200%3B%0Aword%2Dbreak%3A%20normal%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Ehighlight%20pre%2C%0A%2Emarkdown%2Dbody%20pre%20%7B%0Apadding%3A%20var%28%2D%2Dbase%2Dsize%2D16%29%3B%0Aoverflow%3A%20auto%3B%0Afont%2Dsize%3A%2085%25%3B%0Aline%2Dheight%3A%201%2E45%3B%0Acolor%3A%20var%28%2D%2DfgColor%2Ddefault%29%3B%0Abackground%2Dcolor%3A%20var%28%2D%2DbgColor%2Dmuted%29%3B%0Aborder%2Dradius%3A%206px%3B%0A%7D%0A%2Emarkdown%2Dbody%20pre%20code%2C%0A%2Emarkdown%2Dbody%20pre%20tt%20%7B%0Adisplay%3A%20inline%3B%0Apadding%3A%200%3B%0Amargin%3A%200%3B%0Aoverflow%3A%20visible%3B%0Aline%2Dheight%3A%20inherit%3B%0Aword%2Dwrap%3A%20normal%3B%0Abackground%2Dcolor%3A%20rgba%280%2C0%2C0%2C0%29%3B%0Aborder%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20td%2C%0A%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20th%20%7B%0Apadding%3A%205px%3B%0Aoverflow%3A%20hidden%3B%0Afont%2Dsize%3A%2012px%3B%0Aline%2Dheight%3A%201%3B%0Atext%2Dalign%3A%20left%3B%0Awhite%2Dspace%3A%20nowrap%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20%2Eblob%2Dnum%20%7B%0Apadding%3A%2010px%20var%28%2D%2Dbase%2Dsize%2D8%29%209px%3B%0Atext%2Dalign%3A%20right%3B%0Abackground%3A%20var%28%2D%2DbgColor%2Ddefault%29%3B%0Aborder%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20tr%20%7B%0Aborder%2Dtop%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Ecsv%2Ddata%20th%20%7B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dsemibold%2C%20600%29%3B%0Abackground%3A%20var%28%2D%2DbgColor%2Dmuted%29%3B%0Aborder%2Dtop%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20%5Bdata%2Dfootnote%2Dref%5D%3A%3Abefore%20%7B%0Acontent%3A%20%22%5B%22%3B%0A%7D%0A%2Emarkdown%2Dbody%20%5Bdata%2Dfootnote%2Dref%5D%3A%3Aafter%20%7B%0Acontent%3A%20%22%5D%22%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Efootnotes%20%7B%0Afont%2Dsize%3A%2012px%3B%0Acolor%3A%20var%28%2D%2DfgColor%2Dmuted%29%3B%0Aborder%2Dtop%3A%201px%20solid%20var%28%2D%2DborderColor%2Ddefault%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Efootnotes%20ol%20%7B%0Apadding%2Dleft%3A%20var%28%2D%2Dbase%2Dsize%2D16%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Efootnotes%20ol%20ul%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%2Dleft%3A%20var%28%2D%2Dbase%2Dsize%2D16%29%3B%0Amargin%2Dtop%3A%20var%28%2D%2Dbase%2Dsize%2D16%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Efootnotes%20li%20%7B%0Aposition%3A%20relative%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Efootnotes%20li%3Atarget%3A%3Abefore%20%7B%0Aposition%3A%20absolute%3B%0Atop%3A%20calc%28var%28%2D%2Dbase%2Dsize%2D8%29%2A%2D1%29%3B%0Aright%3A%20calc%28var%28%2D%2Dbase%2Dsize%2D8%29%2A%2D1%29%3B%0Abottom%3A%20calc%28var%28%2D%2Dbase%2Dsize%2D8%29%2A%2D1%29%3B%0Aleft%3A%20calc%28var%28%2D%2Dbase%2Dsize%2D24%29%2A%2D1%29%3B%0Apointer%2Devents%3A%20none%3B%0Acontent%3A%20%22%22%3B%0Aborder%3A%202px%20solid%20var%28%2D%2DborderColor%2Daccent%2Demphasis%29%3B%0Aborder%2Dradius%3A%206px%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Efootnotes%20li%3Atarget%20%7B%0Acolor%3A%20var%28%2D%2DfgColor%2Ddefault%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Efootnotes%20%2Edata%2Dfootnote%2Dbackref%20g%2Demoji%20%7B%0Afont%2Dfamily%3A%20monospace%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dc%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcomment%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dc1%2C%0A%2Emarkdown%2Dbody%20%2Epl%2Ds%20%2Epl%2Dv%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2De%2C%0A%2Emarkdown%2Dbody%20%2Epl%2Den%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dsmi%2C%0A%2Emarkdown%2Dbody%20%2Epl%2Ds%20%2Epl%2Ds1%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstorage%2Dmodifier%2Dimport%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dent%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dentity%2Dtag%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dk%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dkeyword%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Ds%2C%0A%2Emarkdown%2Dbody%20%2Epl%2Dpds%2C%0A%2Emarkdown%2Dbody%20%2Epl%2Ds%20%2Epl%2Dpse%20%2Epl%2Ds1%2C%0A%2Emarkdown%2Dbody%20%2Epl%2Dsr%2C%0A%2Emarkdown%2Dbody%20%2Epl%2Dsr%20%2Epl%2Dcce%2C%0A%2Emarkdown%2Dbody%20%2Epl%2Dsr%20%2Epl%2Dsre%2C%0A%2Emarkdown%2Dbody%20%2Epl%2Dsr%20%2Epl%2Dsra%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dv%2C%0A%2Emarkdown%2Dbody%20%2Epl%2Dsmw%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dvariable%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dbu%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dunmatched%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dii%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dtext%29%3B%0Abackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dinvalid%2Dillegal%2Dbg%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dc2%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dtext%29%3B%0Abackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dcarriage%2Dreturn%2Dbg%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dsr%20%2Epl%2Dcce%20%7B%0Afont%2Dweight%3A%20bold%3B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dstring%2Dregexp%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dml%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dlist%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dmh%2C%0A%2Emarkdown%2Dbody%20%2Epl%2Dmh%20%2Epl%2Den%2C%0A%2Emarkdown%2Dbody%20%2Epl%2Dms%20%7B%0Afont%2Dweight%3A%20bold%3B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dheading%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dmi%20%7B%0Afont%2Dstyle%3A%20italic%3B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ditalic%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dmb%20%7B%0Afont%2Dweight%3A%20bold%3B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dbold%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dmd%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dtext%29%3B%0Abackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Ddeleted%2Dbg%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dmi1%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dtext%29%3B%0Abackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dinserted%2Dbg%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dmc%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dtext%29%3B%0Abackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dchanged%2Dbg%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dmi2%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dtext%29%3B%0Abackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmarkup%2Dignored%2Dbg%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dmdr%20%7B%0Afont%2Dweight%3A%20bold%3B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dmeta%2Ddiff%2Drange%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dba%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dbrackethighlighter%2Dangle%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dsg%20%7B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dsublimelinter%2Dgutter%2Dmark%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Epl%2Dcorl%20%7B%0Atext%2Ddecoration%3A%20underline%3B%0Acolor%3A%20var%28%2D%2Dcolor%2Dprettylights%2Dsyntax%2Dconstant%2Dother%2Dreference%2Dlink%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%5Brole%3Dbutton%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%0A%2Emarkdown%2Dbody%20%5Brole%3Dtabpanel%5D%5Btabindex%3D%220%22%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%0A%2Emarkdown%2Dbody%20button%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%0A%2Emarkdown%2Dbody%20summary%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%0A%2Emarkdown%2Dbody%20a%3Afocus%3Anot%28%3Afocus%2Dvisible%29%20%7B%0Aoutline%3A%20none%3B%0Abox%2Dshadow%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20%5Btabindex%3D%220%22%5D%3Afocus%3Anot%28%3Afocus%2Dvisible%29%2C%0A%2Emarkdown%2Dbody%20details%2Ddialog%3Afocus%3Anot%28%3Afocus%2Dvisible%29%20%7B%0Aoutline%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20g%2Demoji%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Amin%2Dwidth%3A%201ch%3B%0Afont%2Dfamily%3A%20%22Apple%20Color%20Emoji%22%2C%22Segoe%20UI%20Emoji%22%2C%22Segoe%20UI%20Symbol%22%3B%0Afont%2Dsize%3A%201em%3B%0Afont%2Dstyle%3A%20normal%20%21important%3B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dnormal%2C%20400%29%3B%0Aline%2Dheight%3A%201%3B%0Avertical%2Dalign%3A%20%2D0%2E075em%3B%0A%7D%0A%2Emarkdown%2Dbody%20g%2Demoji%20img%20%7B%0Awidth%3A%201em%3B%0Aheight%3A%201em%3B%0A%7D%0A%2Emarkdown%2Dbody%20a%3Ahas%28%3Ep%2C%3Ediv%2C%3Epre%2C%3Eblockquote%29%20%7B%0Adisplay%3A%20block%3B%0A%7D%0A%2Emarkdown%2Dbody%20a%3Ahas%28%3Ep%2C%3Ediv%2C%3Epre%2C%3Eblockquote%29%3Anot%28%3Ahas%28%2Esnippet%2Dclipboard%2Dcontent%2C%3Epre%29%29%20%7B%0Awidth%3A%20fit%2Dcontent%3B%0A%7D%0A%2Emarkdown%2Dbody%20a%3Ahas%28%3Ep%2C%3Ediv%2C%3Epre%2C%3Eblockquote%29%3Ahas%28%2Esnippet%2Dclipboard%2Dcontent%2C%3Epre%29%3Afocus%2Dvisible%20%7B%0Aoutline%3A%202px%20solid%20var%28%2D%2Dfocus%2DoutlineColor%29%3B%0Aoutline%2Doffset%3A%202px%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%20%7B%0Alist%2Dstyle%2Dtype%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%20label%20%7B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dnormal%2C%20400%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%2Eenabled%20label%20%7B%0Acursor%3A%20pointer%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%2B%2Etask%2Dlist%2Ditem%20%7B%0Amargin%2Dtop%3A%20var%28%2D%2Dbase%2Dsize%2D4%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%20%2Ehandle%20%7B%0Adisplay%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Etask%2Dlist%2Ditem%2Dcheckbox%20%7B%0Amargin%3A%200%20%2E2em%20%2E25em%20%2D1%2E4em%3B%0Avertical%2Dalign%3A%20middle%3B%0A%7D%0A%2Emarkdown%2Dbody%20ul%3Adir%28rtl%29%20%2Etask%2Dlist%2Ditem%2Dcheckbox%20%7B%0Amargin%3A%200%20%2D1%2E6em%20%2E25em%20%2E2em%3B%0A%7D%0A%2Emarkdown%2Dbody%20ol%3Adir%28rtl%29%20%2Etask%2Dlist%2Ditem%2Dcheckbox%20%7B%0Amargin%3A%200%20%2D1%2E6em%20%2E25em%20%2E2em%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Econtains%2Dtask%2Dlist%3Ahover%20%2Etask%2Dlist%2Ditem%2Dconvert%2Dcontainer%2C%0A%2Emarkdown%2Dbody%20%2Econtains%2Dtask%2Dlist%3Afocus%2Dwithin%20%2Etask%2Dlist%2Ditem%2Dconvert%2Dcontainer%20%7B%0Adisplay%3A%20block%3B%0Awidth%3A%20auto%3B%0Aheight%3A%2024px%3B%0Aoverflow%3A%20visible%3B%0Aclip%2Dpath%3A%20none%3B%0A%7D%0A%2Emarkdown%2Dbody%20%3A%3A%2Dwebkit%2Dcalendar%2Dpicker%2Dindicator%20%7B%0Afilter%3A%20invert%2850%25%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%20%7B%0Apadding%3A%20var%28%2D%2Dbase%2Dsize%2D8%29%20var%28%2D%2Dbase%2Dsize%2D16%29%3B%0Amargin%2Dbottom%3A%20var%28%2D%2Dbase%2Dsize%2D16%29%3B%0Acolor%3A%20inherit%3B%0Aborder%2Dleft%3A%20%2E25em%20solid%20var%28%2D%2DborderColor%2Ddefault%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%3E%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%3E%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%20%2Emarkdown%2Dalert%2Dtitle%20%7B%0Adisplay%3A%20flex%3B%0Afont%2Dweight%3A%20var%28%2D%2Dbase%2Dtext%2Dweight%2Dmedium%2C%20500%29%3B%0Aalign%2Ditems%3A%20center%3B%0Aline%2Dheight%3A%201%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dnote%20%7B%0Aborder%2Dleft%2Dcolor%3A%20var%28%2D%2DborderColor%2Daccent%2Demphasis%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dnote%20%2Emarkdown%2Dalert%2Dtitle%20%7B%0Acolor%3A%20var%28%2D%2DfgColor%2Daccent%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dimportant%20%7B%0Aborder%2Dleft%2Dcolor%3A%20var%28%2D%2DborderColor%2Ddone%2Demphasis%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dimportant%20%2Emarkdown%2Dalert%2Dtitle%20%7B%0Acolor%3A%20var%28%2D%2DfgColor%2Ddone%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dwarning%20%7B%0Aborder%2Dleft%2Dcolor%3A%20var%28%2D%2DborderColor%2Dattention%2Demphasis%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dwarning%20%2Emarkdown%2Dalert%2Dtitle%20%7B%0Acolor%3A%20var%28%2D%2DfgColor%2Dattention%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dtip%20%7B%0Aborder%2Dleft%2Dcolor%3A%20var%28%2D%2DborderColor%2Dsuccess%2Demphasis%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dtip%20%2Emarkdown%2Dalert%2Dtitle%20%7B%0Acolor%3A%20var%28%2D%2DfgColor%2Dsuccess%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dcaution%20%7B%0Aborder%2Dleft%2Dcolor%3A%20var%28%2D%2DborderColor%2Ddanger%2Demphasis%29%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Emarkdown%2Dalert%2Emarkdown%2Dalert%2Dcaution%20%2Emarkdown%2Dalert%2Dtitle%20%7B%0Acolor%3A%20var%28%2D%2DfgColor%2Ddanger%29%3B%0A%7D%0A%2Emarkdown%2Dbody%3E%2A%3Afirst%2Dchild%3E%2Eheading%2Delement%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%20%21important%3B%0A%7D%0A%2Emarkdown%2Dbody%20%2Ehighlight%20pre%3Ahas%28%2B%2Ezeroclipboard%2Dcontainer%29%20%7B%0Amin%2Dheight%3A%2052px%3B%0A%7D%0A" rel="stylesheet" />
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#テキスト整形のルール" id="toc-テキスト整形のルール">テキスト整形のルール</a>
+<ul>
+<li><a href="#ブロック要素" id="toc-ブロック要素">ブロック要素</a>
+<ul>
+<li><a href="#段落" id="toc-段落">段落</a></li>
+<li><a href="#引用文" id="toc-引用文">引用文</a></li>
+<li><a href="#リスト構造" id="toc-リスト構造">リスト構造</a></li>
+<li><a href="#整形済みテキスト" id="toc-整形済みテキスト">整形済みテキスト</a></li>
+<li><a href="#表組み" id="toc-表組み">表組み</a></li>
+</ul></li>
+<li><a href="#要素の表示位置及び背景色文字色文字サイズpx単位を指定しますデフォルトは左寄せになります" id="toc-要素の表示位置及び背景色文字色文字サイズpx単位を指定しますデフォルトは左寄せになります">-
+要素の表示位置及び背景色・文字色・文字サイズ(px単位)を指定します。デフォルトは左寄せになります。</a>
+<ul>
+<li><a href="#csv形式の表組み" id="toc-csv形式の表組み">CSV形式の表組み</a></li>
+<li><a href="#見出し" id="toc-見出し">見出し</a></li>
+<li><a href="#目次" id="toc-目次">目次</a></li>
+<li><a href="#左寄せセンタリング右寄せ" id="toc-左寄せセンタリング右寄せ">左寄せ・センタリング・右寄せ</a></li>
+<li><a href="#水平線" id="toc-水平線">水平線</a></li>
+<li><a href="#行間開け" id="toc-行間開け">行間開け</a></li>
+<li><a href="#添付ファイル画像の貼り付け" id="toc-添付ファイル画像の貼り付け">添付ファイル・画像の貼り付け</a></li>
+</ul></li>
+<li><a href="#ファイルへのリンク画像を表示する位置を指定しますデフォルトではセンタリングされます" id="toc-ファイルへのリンク画像を表示する位置を指定しますデフォルトではセンタリングされます">-
+ファイルへのリンク・画像を表示する位置を指定します。デフォルトではセンタリングされます。</a></li>
+<li><a href="#ファイルへのリンク画像を枠で囲むかどうかを指定しますデフォルトは囲みません" id="toc-ファイルへのリンク画像を枠で囲むかどうかを指定しますデフォルトは囲みません">-
+ファイルへのリンク・画像を枠で囲むかどうかを指定します。デフォルトは囲みません。</a></li>
+<li><a href="#テキストの回り込みを指定しますデフォルトでは回り込みを行ないません" id="toc-テキストの回り込みを指定しますデフォルトでは回り込みを行ないません">-
+テキストの回り込みを指定します。デフォルトでは回り込みを行ないません。</a></li>
+<li><a href="#デフォルトでは添付ファイルへのリンクが張られますがnolinkを指定するとリンクを張りません" id="toc-デフォルトでは添付ファイルへのリンクが張られますがnolinkを指定するとリンクを張りません">-
+デフォルトでは添付ファイルへのリンクが張られますが、nolinkを指定するとリンクを張りません。</a>
+<ul>
+<li><a href="#テキストの回り込みの解除" id="toc-テキストの回り込みの解除">テキストの回り込みの解除</a></li>
+<li><a href="#フォーム" id="toc-フォーム">フォーム</a></li>
+</ul></li>
+<li><a href="#インライン要素" id="toc-インライン要素">インライン要素</a>
+<ul>
+<li><a href="#文字列" id="toc-文字列">文字列</a></li>
+<li><a href="#改行" id="toc-改行">改行</a></li>
+<li><a href="#強調斜体" id="toc-強調斜体">強調・斜体</a></li>
+<li><a href="#文字サイズ" id="toc-文字サイズ">文字サイズ</a></li>
+<li><a href="#文字色" id="toc-文字色">文字色</a></li>
+<li><a href="#取消線" id="toc-取消線">取消線</a></li>
+<li><a href="#注釈" id="toc-注釈">注釈</a></li>
+<li><a href="#添付ファイル画像の貼り付け-1" id="toc-添付ファイル画像の貼り付け-1">添付ファイル・画像の貼り付け</a></li>
+</ul></li>
+<li><a href="#デフォルトでは添付ファイルへのリンクが張られますがnolink-を指定するとリンクを張りません" id="toc-デフォルトでは添付ファイルへのリンクが張られますがnolink-を指定するとリンクを張りません">-
+デフォルトでは添付ファイルへのリンクが張られますが、nolink
+を指定するとリンクを張りません。</a>
+<ul>
+<li><a href="#ルビ構造" id="toc-ルビ構造">ルビ構造</a></li>
+<li><a href="#アンカーの設定" id="toc-アンカーの設定">アンカーの設定</a></li>
+<li><a href="#カウンタ表示" id="toc-カウンタ表示">カウンタ表示</a></li>
+</ul></li>
+<li><a href="#今日のアクセス数を表示します" id="toc-今日のアクセス数を表示します">-
+今日のアクセス数を表示します。</a></li>
+<li><a href="#昨日のアクセス数を表示します" id="toc-昨日のアクセス数を表示します">-
+昨日のアクセス数を表示します。</a>
+<ul>
+<li><a href="#オンライン表示" id="toc-オンライン表示">オンライン表示</a></li>
+<li><a href="#バージョン表示" id="toc-バージョン表示">バージョン表示</a></li>
+<li><a href="#wikiname" id="toc-wikiname">WikiName</a></li>
+<li><a href="#ページ名" id="toc-ページ名">ページ名</a></li>
+<li><a href="#interwiki" id="toc-interwiki">InterWiki</a></li>
+<li><a href="#リンク" id="toc-リンク">リンク</a></li>
+<li><a href="#エイリアス" id="toc-エイリアス">エイリアス</a></li>
+<li><a href="#タブコード" id="toc-タブコード">タブコード</a></li>
+<li><a href="#ページ名置換文字" id="toc-ページ名置換文字">ページ名置換文字</a></li>
+<li><a href="#日時置換文字" id="toc-日時置換文字">日時置換文字</a></li>
+<li><a href="#文字参照文字" id="toc-文字参照文字">文字参照文字</a></li>
+<li><a href="#数値参照文字" id="toc-数値参照文字">数値参照文字</a></li>
+</ul></li>
+<li><a href="#その他" id="toc-その他">その他</a>
+<ul>
+<li><a href="#コメント行" id="toc-コメント行">コメント行</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<!-- #freeze -->
+<!-- #nofollow -->
+<!-- #norelated -->
+<h1 id="テキスト整形のルール">テキスト整形のルール</h1>
+<p>通常は入力した文章がそのまま出力されます。</p>
+<ul>
+<li>HTMLのタグは効果がありません。書かれた文章はそのまま(「<font color="red">text</font>」といった形のまま)表示されます</li>
+<li>段落と段落の区切りには空行をはさんで下さい。空行をはさまず、連続している複数の行は同じ段落と解釈されます
+(連結して表示されます)</li>
+</ul>
+<p>これに加えて、特定のルールによるテキスト整形を行うことができます。以下では、プラグインについてはよく使われるものだけを簡略に説明しています。プラグインのオプションなど詳細な説明については
+<a href="PukiWiki/1.4/Manual/Plugin.md">PukiWiki/1.4/Manual/Plugin</a>
+を参照してください。</p>
+<hr />
+<!-- #contents -->
+<hr />
+<h2 id="ブロック要素">ブロック要素</h2>
+<ul>
+<li><p>ブロック要素は、インライン要素と他のブロック要素を子要素にすることができます。ただし、段落、見出し、水平線、#から始まるブロック要素は他のブロック要素を子要素にすることはできません。</p></li>
+<li><p>空行はトップレベルのブロック要素の区切りになります。空行が現われると、すべてのブロック要素は終了します。</p></li>
+<li><p>ブロック要素は、他のブロック要素の子要素になることができます。</p>
+<ul>
+<li>リスト構造と引用文は他のブロック要素を子要素にすることができます。子要素のブロック要素は親要素のレベルに従ってインデントされて表示されます。空行が現われるとブロック要素は終了します。</li>
+<li>リスト構造と引用文のネストには3段階のレベルがありますが、リスト構造のレベルと引用文のレベルは独立しています。従って、リスト構造を引用文の子要素にする場合や引用文をリスト構造の子要素にする場合は、レベルを1段階増やさずに記述します。リスト構造を他のリスト構造の子要素にする場合や引用文を他の引用文の子要素にする場合は、レベルを1段階増やして記述します。</li>
+<li>他のブロック要素の子要素となっている引用文から脱出するとき、親のブロック要素を継続したい場合は行頭に&lt;、&lt;&lt;、&lt;&lt;&lt;を記述します。&lt;で第1レベルの引用文から、&lt;&lt;で第2レベルの引用文から、&lt;&lt;&lt;で第3レベルの引用文から脱出します。空行を記述すると引用文だけでなく親のブロック要素からも脱出します。</li>
+</ul></li>
+<li><p>ブロック要素となるプラグインは#～の形式になっています。((インライン要素となるプラグインやユーザ定義とは異なり、ブロック要素となるプラグインでは終端に;を付加する必要はありません。プラグインによっては正常に動作しなくなる場合があります。))</p></li>
+</ul>
+<h3 id="段落">段落</h3>
+<pre><code>インライン要素</code></pre>
+<p>他のブロック要素を明示しない限り、段落となります。</p>
+<pre><code>~ インライン要素</code></pre>
+<p>行頭で ~
+を指定した場合も段落になります。行頭書式の文字(<sub>、-、+、:、&gt;、|、#、//)を通常の文字として段落の先頭に書きたい場合は、行頭に</sub>を記述して書くことができます。</p>
+<ul>
+<li>段落の先頭は1文字分字下げされます。但し、番号なしリスト構造、番号付きリスト構造、引用文内の段落では字下げされません。定義リスト内の段落の先頭は1文字分字下げされます。</li>
+<li>段落は、新たなブロック要素が現われるまで継続します。</li>
+<li>段落は、他のブロック要素の子要素になることができます。</li>
+<li>段落は、他のブロック要素を子要素にすることはできません。</li>
+</ul>
+<h3 id="引用文">引用文</h3>
+<pre><code>&gt; インライン要素</code></pre>
+<p>行頭で &gt; を指定すると、引用文になります。引用文は
+&gt;、&gt;&gt;、&gt;&gt;&gt; の3レベルあります。 -
+引用文の中は、ブロック要素を明示しない限り、段落となります。 -
+引用文は、空行が現われるまで継続します。 -
+引用文内の段落は、新たな引用文またはブロック要素が現われるまで継続します。
+-
+引用文は、他のブロック要素の子要素になることができます。他の引用文の子要素にする場合は、レベルを1段増やして記述します。リスト構造の子要素にする場合はレベルを1段増やさずに記述します。
+-
+引用文は、他のブロック要素を子要素にすることができます。引用文の子要素となるリスト構造はレベルを1段増やさずに記述します。
+-
+リスト構造内の引用文から脱出する場合で、リスト構造を継続する場合は、&lt;、&lt;&lt;、&lt;&lt;&lt;を行頭に記述します。</p>
+<h3 id="リスト構造">リスト構造</h3>
+<pre><code>- インライン要素</code></pre>
+<p>行頭で - を指定すると、番号なしリストになります。番号なしリストは
+-、–、— の3レベルあります。</p>
+<ul>
+<li>番号なしリストは、他のブロック要素の子要素になることができます。他のリスト構造の子要素にする場合は、レベルを1段増やして記述します。引用文の子要素にする場合は、レベルを増やさずに記述します。</li>
+<li>-の直後に ~を記述すると段落を子要素にすることができます。</li>
+<li>番号なしリストは、
+<strong>リストの先頭がインライン要素または段落である場合に限り</strong>
+、リストの次の行に他のブロック要素を記述することで、他のブロック要素を子要素にすることができます。</li>
+</ul>
+<pre><code>+ インライン要素</code></pre>
+<p>行頭で + を指定すると、番号付きリストになります。番号付きリストは
++、++、+++ の3レベルあります。</p>
+<ul>
+<li>番号付きリストは、他のブロック要素の子要素になることができます。他のリスト構造の子要素にする場合は、レベルを1段増やして記述します。引用文の子要素にする場合は、レベルを増やさずに記述します。</li>
+<li><ul>
+<li>の直後に ~ を記述すると段落を子要素にすることができます。</li>
+</ul></li>
+<li>番号付きリストは、
+<strong>リストの先頭がインライン要素または段落である場合に限り</strong>
+、リストの次の行に他のブロック要素を記述することで、他のブロック要素を子要素にすることができます。</li>
+</ul>
+<pre><code>: 定義語 | 説明文</code></pre>
+<p>行頭を : で始め、| 記号で区切ると、定義リストになります。定義リストは
+:、::、:::
+の3段階あります。定義リストの定義語、説明文は省略することができます。複数の連続した定義リストを記述し、2つ目以降の定義語を省略することで1つの定義語に対する複数の説明文を記述することができます。</p>
+<ul>
+<li>行中に | がないと定義リストにはなりません。</li>
+<li>定義語・説明文は、インライン要素のみ記述することができます。</li>
+<li>定義リストは、他のブロック要素の子要素になることができます。他のリスト構造の子要素にする場合は、レベルを1段増やして記述します。引用文の子要素にする場合は、レベルを増やさずに記述します。</li>
+<li><div class="line-block">の直後に ~
+を記述すると段落を子要素にすることができます。</div></li>
+<li>定義リストは、定義リストの次の行に他のブロック要素を記述することで、他のブロック要素を子要素にすることができます。</li>
+</ul>
+<h3 id="整形済みテキスト">整形済みテキスト</h3>
+<p>行頭が半角空白で始まる行は整形済みテキストとなります。行の自動折り返しは行なわれません。</p>
+<ul>
+<li>整形済みテキストは、他のブロック要素の子要素になることができます。</li>
+<li>整形済みテキストは、他のブロック要素を子要素にすることができません。</li>
+<li>整形済みテキストは、すべての子要素を文字列として扱います。</li>
+</ul>
+<h3 id="表組み">表組み</h3>
+<pre><code>| インライン要素 | インライン要素 |</code></pre>
+<p>行頭から | でインライン要素を区切ることで表組みになります。</p>
+<ul>
+<li>各要素の先頭に下記の記述子を指定できます。</li>
+</ul>
+<pre><code>LEFT:
+CENTER:
+RIGHT:
+BGCOLOR(色):
+COLOR(色):
+SIZE(サイズ):</code></pre>
+<h2 id="要素の表示位置及び背景色文字色文字サイズpx単位を指定しますデフォルトは左寄せになります">-
+要素の表示位置及び背景色・文字色・文字サイズ(px単位)を指定します。デフォルトは左寄せになります。</h2>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 38%" />
+<col style="width: 30%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">表組みの</td>
+<td style="text-align: center;">各セルの要素の配置に</td>
+<td style="text-align: right;">関するサンプル</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span style="color: crimson">左寄せ</span></td>
+<td style="text-align: center;">センタリング</td>
+<td style="text-align: right;">右寄せ <!-- BGCOLOR(yellow) --></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">右寄せ</td>
+<td style="text-align: center;">左寄せ</td>
+<td style="text-align: right;">センタリング</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>行末にcを記述すると、書式指定行となります。書式指定行では、次の記述子が指定できます。</li>
+</ul>
+<pre><code>LEFT:
+CENTER:
+RIGHT:
+BGCOLOR(色):
+COLOR(色):
+SIZE(サイズ):</code></pre>
+<pre><code>- 記述子の後ろに数値を記述すると、セル幅がpx単位で指定できます。</code></pre>
+<ul>
+<li><p>行末にhを記述すると、ヘッダ行(thead)になります。</p></li>
+<li><p>行末にfを記述すると、フッタ行(tfoot)になります。</p></li>
+<li><p>セル内のインライン要素の先頭に~を付けると、ヘッダ(th)になります。</p></li>
+<li><p>セル内に &gt;
+を単独で記述すると右のセルと連結します(colspan)。</p></li>
+<li><p>セル内に ~
+を単独で記述すると上のセルと連結します(rowspan)。</p></li>
+<li><p>表組みは、他のブロック要素の子要素になることができます。</p></li>
+<li><p>表組みは、他のブロック要素を子要素にすることができません。</p></li>
+</ul>
+<h3 id="csv形式の表組み">CSV形式の表組み</h3>
+<pre><code>,データ,データ,…</code></pre>
+<p>行頭でカンマ(,)を記述し、インライン要素をカンマ区切りで記述すると表組みになります。</p>
+<ul>
+<li><p>インライン要素はダブルクォーテーション(“)で囲むことができます。ダブルクォーテーションで囲むことで、カンマ(,)を含むインライン要素を記述できます。</p></li>
+<li><p>ダブルクォーテーション(“)で囲んだデータの中で、ダブルクォーテーションを2つ(”“)続けることで、ダブルクォーテーション(”)を含むインライン要素を記述できます。</p></li>
+<li><p>インライン要素の代わりにイコールを2つ(==)記述すると、colspanを意味します。</p></li>
+<li><p>インライン要素の左に1つ以上の半角空白文字を記述すると右寄せに、インライン要素の左右に1つ以上の半角空白文字を記述するとセンタリングになります。</p></li>
+<li><p>表組みは、他のブロック要素の子要素になることができます。</p></li>
+<li><p>表組みは、他のブロック要素を子要素にすることができません。</p></li>
+</ul>
+<h3 id="見出し">見出し</h3>
+<pre><code>* インライン要素</code></pre>
+<p>行頭で * を記述すると、見出しになります。見出しは
+<em>、<strong>、</strong></em> の3段階あります。</p>
+<ul>
+<li>見出しは、他のブロック要素の子要素になることはできません。見出しが現われると他のブロック要素は終了します。</li>
+<li>見出しは、他のブロック要素を子要素にすることはできません。</li>
+</ul>
+<h3 id="目次">目次</h3>
+<pre><code>#contents</code></pre>
+<p>行頭で #contents
+を記述すると、見出しに基づいて目次を作成します。一般的に #contents
+はページの最初のほうに記述します。</p>
+<ul>
+<li>目次は、他のブロック要素の子要素になることができますが、トップレベルに設置することを前提に左マージンを設定してありますので、他のブロック要素の子要素にはしないでください。</li>
+<li>目次は、他のブロック要素を子要素にすることはできません。</li>
+</ul>
+<h3 id="左寄せセンタリング右寄せ">左寄せ・センタリング・右寄せ</h3>
+<pre><code>LEFT:インライン要素
+CENTER:インライン要素
+RIGHT:インライン要素</code></pre>
+<p>行頭で LEFT:、 CENTER:、 RIGHT:
+を記述すると、インライン要素が左寄せ、センタリング、右寄せされます。</p>
+<ul>
+<li>LEFT:、CENTER:、RIGHT:は、他のブロック要素の子要素になることができます。</li>
+<li>LEFT:、CENTER:、RIGHT:は、他のブロック要素を子要素にすることができません。</li>
+</ul>
+<h3 id="水平線">水平線</h3>
+<pre><code>---------------------------------------------</code></pre>
+<p>行頭で4つ以上の - を書くと水平線になります。</p>
+<ul>
+<li>水平線は、他のブロック要素の子要素になることはできません。水平線が現われると他のブロック要素は終了します。</li>
+<li>水平線は、他のブロック要素を子要素にすることはできません。</li>
+</ul>
+<pre><code>#hr</code></pre>
+<p>行頭で #hr
+を記述すると、区切り線になります。区切り線は上位のブロック要素の幅の60%の長さの水平線がセンタリングされて引かれます。</p>
+<ul>
+<li>区切り線は、他のブロック要素の子要素になることができます。</li>
+<li>区切り線は、他のブロック要素を子要素にすることはできません。</li>
+</ul>
+<h3 id="行間開け">行間開け</h3>
+<pre><code>#br</code></pre>
+<p>行頭で #br
+を記述すると、ブロック要素間またはブロック要素内で行間を開けることができます((#brをブロック要素の直後の空行の次に指定すればブロック要素間の行間、ブロック要素の直後に指定すればそのブロック要素内での行間を開けることになります。#brは、行末改行と違って、次の行の行頭書式を無効にはしません))。</p>
+<ul>
+<li>行間開けは、他のブロック要素の子要素になることができます。</li>
+<li>行間開けは、他のブロック要素を子要素にすることはできません。</li>
+</ul>
+<h3 id="添付ファイル画像の貼り付け">添付ファイル・画像の貼り付け</h3>
+<pre><code>#ref(添付ファイル名)
+#ref(ファイルのURL)</code></pre>
+<p>行頭で #ref
+を記述すると、添付ファイルまたは指定されたURLにあるファイルへのリンクを貼り付けることができます。ファイルが画像ファイルの場合は、その画像を表示します。</p>
+<ul>
+<li>#ref
+には、カンマで区切って下記のパラメタを指定できます。パラメタを省略した場合はデフォルト値となります。</li>
+</ul>
+<pre><code>添付ファイルのページ</code></pre>
+<pre><code>- 添付ファイルが存在するページ名を指定します。デフォルトは現在のページです。
+- このパラメタを指定する場合は、添付ファイル名の次に記述します。</code></pre>
+<ul>
+<li></li>
+</ul>
+<pre><code>left
+center
+right</code></pre>
+<h2 id="ファイルへのリンク画像を表示する位置を指定しますデフォルトではセンタリングされます">-
+ファイルへのリンク・画像を表示する位置を指定します。デフォルトではセンタリングされます。</h2>
+<pre><code>wrap
+nowrap</code></pre>
+<h2 id="ファイルへのリンク画像を枠で囲むかどうかを指定しますデフォルトは囲みません">-
+ファイルへのリンク・画像を枠で囲むかどうかを指定します。デフォルトは囲みません。</h2>
+<pre><code>around</code></pre>
+<h2 id="テキストの回り込みを指定しますデフォルトでは回り込みを行ないません">-
+テキストの回り込みを指定します。デフォルトでは回り込みを行ないません。</h2>
+<pre><code>nolink</code></pre>
+<h2 id="デフォルトでは添付ファイルへのリンクが張られますがnolinkを指定するとリンクを張りません">-
+デフォルトでは添付ファイルへのリンクが張られますが、nolinkを指定するとリンクを張りません。</h2>
+<pre><code>代替文字列</code></pre>
+<pre><code>- ファイル名の代わりに表示する文字列や画像の代替文字列を指定できます。指定しない場合は、ファイル名になります。
+- 代替文字列には文字列以外のインライン要素を含めることはできません。ページ名、文字列以外のインライン要素を記述しても文字列として扱われます。
+- このパラメタを指定する場合は、最後に記述します。</code></pre>
+<ul>
+<li>#refは、他のブロック要素の子要素になることができます。</li>
+<li>#refは、他のブロック要素を子要素にすることはできません。</li>
+</ul>
+<h3 id="テキストの回り込みの解除">テキストの回り込みの解除</h3>
+<pre><code>#clear</code></pre>
+<p>行頭で #clear を記述すると、 #ref
+で指定したテキストの回り込みを解除します。 #clear
+を指定しなくても、記事の末尾でテキストの回り込みが自動的に解除されます。</p>
+<ul>
+<li>#clearは、他のブロック要素の子要素になることができます。</li>
+<li>#clearは、他のブロック要素を子要素にすることができません。</li>
+</ul>
+<!-- #img(,clear) -->
+<!-- ~#clearと同じ。 -->
+<h3 id="フォーム">フォーム</h3>
+<pre><code>#comment</code></pre>
+<p>行頭で #comment
+を記述すると、コメントを挿入するためのフォームが埋め込まれます。</p>
+<ul>
+<li>#commentは、他のブロック要素の子要素になることができますが、トップレベルに設置することを前提に左マージンを設定してありますので、他のブロック要素の子要素にはしないでください。</li>
+<li>#commentは、他のブロック要素を子要素にすることはできません。</li>
+</ul>
+<pre><code>#pcomment</code></pre>
+<p>行頭で #pcomment
+を記述すると、コメントを挿入するためのフォームが埋め込まれます。
+#comment
+とは異なり、コメントは別ページに記録されます。また、コメントに対するレスポンスを階層状に表示します。</p>
+<ul>
+<li>#pcommentは、他のブロック要素の子要素になることができますが、トップレベルに設置することを前提に左マージンを設定してありますので、他のブロック要素の子要素にはしないでください。</li>
+<li>#pcommentは、他のブロック要素を子要素にすることはできません。</li>
+</ul>
+<pre><code>#article</code></pre>
+<p>行頭で#articleを記述すると、簡易掲示板のフォームが埋め込まれます。</p>
+<ul>
+<li>#articleは、他のブロック要素の子要素になることができますが、トップレベルに設置することを前提に左マージンを設定してありますので、他のブロック要素の子要素にはしないでください。</li>
+<li>#articleは、他のブロック要素を子要素にすることはできません。</li>
+</ul>
+<pre><code>#vote(選択肢1,選択肢2,...)</code></pre>
+<p>行頭で #vote を記述すると、簡易投票フォームが埋め込まれます。</p>
+<ul>
+<li>選択肢は文字列、ページ名、InterWiki、リンクを含めることができます。その他のインライン要素を含めることができません。</li>
+<li>#voteは、他のブロック要素の子要素になることができますが、トップレベルに設置することを前提に左マージンを設定してありますので、他のブロック要素の子要素にはしないでください。</li>
+<li>#voteは、他のブロック要素を子要素にすることはできません。</li>
+</ul>
+<h2 id="インライン要素">インライン要素</h2>
+<ul>
+<li>インライン要素は、必ずブロック要素の子要素になっています。
+<ul>
+<li>行頭書式でブロック要素を明示しない場合は、段落の子要素となります。</li>
+<li>行頭書式でブロック要素を明示した場合は、指定したブロック要素の子要素になります。</li>
+</ul></li>
+<li>特定のインライン要素は、他のインライン要素を子要素にすることができます。</li>
+<li>インライン要素はブロック要素を子要素にすることはできません。</li>
+<li>インライン要素となるプラグイン及びユーザー定義は &amp;～;
+の形式になっています。</li>
+<li>インライン要素となるプラグインに対してオプションと子要素を指定する場合は、
+&amp;プラグイン名(オプション){子要素}; の形式になります。</li>
+</ul>
+<h3 id="文字列">文字列</h3>
+<pre><code>文字列</code></pre>
+<p>文字列はインライン要素です。</p>
+<ul>
+<li>文字列は、他のインライン要素の子要素になることができます。</li>
+<li>文字列は、他のインライン要素を子要素にすることができません。</li>
+</ul>
+<h3 id="改行">改行</h3>
+<pre><code>インライン要素~</code></pre>
+<p>行末に~を書くと行末改行になります。行末改行はブロック要素内での改行になります。</p>
+<ul>
+<li>行末改行の次の行の行頭書式は無効になり、文字列として扱われます。</li>
+<li>行末改行は、他のインライン要素の子要素になることはできません。</li>
+<li>行末改行は、他のインライン要素を子要素にすることはできません。</li>
+<li>行末改行は、定義リストの定義語、表組みの要素、#で始まるブロック要素のパラメタの中では使用できません。</li>
+</ul>
+<pre><code>&amp;br;</code></pre>
+<p>行中に &amp;br; を書くと、そこで改行されます。行末の ~
+と違い、定義リストの定義語や表組の要素、#
+で始まるブロック要素のパラメタの中でも使用できます。</p>
+<ul>
+<li>行中改行は、他のインライン要素の子要素になることができます。</li>
+<li>行中改行は、他のインライン要素を子要素にすることはできません。</li>
+</ul>
+<h3 id="強調斜体">強調・斜体</h3>
+<pre><code>&#39;&#39;インライン要素&#39;&#39;</code></pre>
+<p>行中のインライン要素を &#39;&#39; ではさむと、インライン要素が
+<strong>強調表示</strong> になります。</p>
+<ul>
+<li>強調は、他のインライン要素の子要素になることができます。</li>
+<li>強調は、他のインライン要素を子要素にすることができます。</li>
+</ul>
+<pre><code>&#39;&#39;&#39;インライン要素&#39;&#39;&#39;</code></pre>
+<p>行中のインライン要素を &#39;&#39;&#39; ではさむと、インライン要素が
+<em>斜体表示</em> になります。</p>
+<ul>
+<li>斜体は、他のインライン要素の子要素になることができます。</li>
+<li>斜体は、他のインライン要素を子要素にすることができます。</li>
+</ul>
+<h3 id="文字サイズ">文字サイズ</h3>
+<pre><code>&amp;size(サイズ){インライン要素};</code></pre>
+<p>行中に &amp;size
+を書くとインライン要素の文字サイズを指定することができます。サイズはピクセル単位(px)で指定します。例えば20を指定すると、SIZE(20){20ピクセルの文字の大きさ}になります。</p>
+<ul>
+<li>文字サイズは、他のインライン要素の子要素になることができます。</li>
+<li>文字サイズは、他のインライン要素を子要素にすることができます。</li>
+</ul>
+<h3 id="文字色">文字色</h3>
+<pre><code>&amp;color(文字色,背景色){インライン要素};</code></pre>
+<p>行中に &amp;color と書くとインライン要素の<span style="color: crimson">文字色</span>と<span style="color: blue; background-color: crimson">背景色</span>を指定することができます。背景色は省略できます。</p>
+<ul>
+<li>色の指定は、次のいずれかの形式で行ないます。
+<ul>
+<li>色を意味するキーワード(red, blueなど)</li>
+<li>#16進数6桁</li>
+<li>#16進数3桁</li>
+</ul></li>
+<li>文字色は、他のインライン要素の子要素になることができます。</li>
+<li>文字色は、他のインライン要素を子要素にすることができます。</li>
+</ul>
+<h3 id="取消線">取消線</h3>
+<pre><code>%%インライン要素%%</code></pre>
+<p>行中のインライン要素を%%ではさむと、インライン要素に
+<del>取消線</del> が付きます。</p>
+<ul>
+<li>取消線は、他のインライン要素の子要素になることができます。</li>
+<li>取消線は、他のインライン要素を子要素にすることができます。</li>
+</ul>
+<h3 id="注釈">注釈</h3>
+<pre><code>((インライン要素))</code></pre>
+<p>行中でインライン要素を (( と ))
+ではさむと、注釈((注釈のサンプル))が作成され、行中に注釈へのリンクが貼られます。</p>
+<ul>
+<li>注釈は、他のインライン要素の子要素になることができます。親要素は注釈文ではなく、注釈へのリンクに反映されます。</li>
+<li>注釈は、他のインライン要素を子要素にすることができます。子要素は注釈文に反映されます。</li>
+</ul>
+<!-- &p; -->
+<!-- 注釈内に&amp;p;を書くと改段落になります ((注釈内改段落は、本来はブロック要素ですが、PukiWikiでは注釈をインラインで記述するため、インライン要素として記述する必要があります。他のインライン要素の子要素にはできないことに留意して使用する必要があります。))。 -->
+<!-- -注釈内改段落は、他のインライン要素の子要素になることはできません。 -->
+<!-- -注釈内改段落は、他のインライン要素を子要素にすることはできません。 -->
+<h3 id="添付ファイル画像の貼り付け-1">添付ファイル・画像の貼り付け</h3>
+<pre><code>&amp;ref(添付ファイル名);
+&amp;ref(ファイルのURL);</code></pre>
+<p>行中で &amp;ref
+を記述すると、添付ファイルまたは指定されたURLにあるファイルへのリンクを貼り付けることができます。ファイルが画像ファイルの場合は、その画像を表示します。</p>
+<ul>
+<li>&amp;ref
+には、カンマで区切って下記のパラメタを指定できます。パラメタを省略した場合はデフォルト値となります。</li>
+</ul>
+<pre><code>添付ファイルのページ</code></pre>
+<pre><code>- 添付ファイルが存在するページ名を指定します。デフォルトは現在のページです。
+- このパラメタを指定する場合は、添付ファイル名の次に記述します。</code></pre>
+<ul>
+<li></li>
+</ul>
+<pre><code>nolink</code></pre>
+<h2 id="デフォルトでは添付ファイルへのリンクが張られますがnolink-を指定するとリンクを張りません">-
+デフォルトでは添付ファイルへのリンクが張られますが、nolink
+を指定するとリンクを張りません。</h2>
+<pre><code>代替文字列</code></pre>
+<pre><code>- ファイル名の代わりに表示する文字列や画像の代替文字列を指定できます。指定しない場合は、ファイル名になります。
+- 代替文字列には文字列以外のインライン要素を含めることはできません。ページ名、文字列以外のインライン要素を記述しても文字列として扱われます。
+- このパラメタを指定する場合は、最後に記述します。</code></pre>
+<ul>
+<li>&amp;ref は、他のインライン要素の子要素になることができます。</li>
+<li>&amp;ref は、他のインライン要素を子要素にはできません。</li>
+</ul>
+<h3 id="ルビ構造">ルビ構造</h3>
+<pre><code>&amp;ruby(ルビ){インライン要素};</code></pre>
+<p>行中で &amp;ruby
+を書くとインライン要素に対するルビをふることができます。ルビに対応していないブラウザではルビが本文中に
+( と ) に囲まれて表示されます。</p>
+<ul>
+<li>ルビ構造のルビにはインライン要素を記述します。ただし、ルビの特性上、期待通りの表示になるとは限りません。</li>
+<li>ルビ構造は、他のインライン要素の子要素になることができます。</li>
+<li>ルビ構造は、他のインライン要素を子要素にすることができます。</li>
+<li>ルビ構造をルビ構造の子要素にはできません(ネストはできません)。</li>
+<li>注釈内や文字サイズを小さくしている部分での使用は、ルビが判読できなくなるので避けてください。</li>
+</ul>
+<h3 id="アンカーの設定">アンカーの設定</h3>
+<pre><code>&amp;aname(アンカー名);
+&amp;aname(アンカー名){インライン要素};</code></pre>
+<p>行中で &amp;aname
+を記述するとリンクのアンカーを設定することができます。リンクの飛び先にしたい位置に記述します。</p>
+<ul>
+<li>アンカー名は、半角アルファベットから始まる半角アルファベット・数字・ハイフン・アンダースコアからなる文字列を指定します。</li>
+<li>アンカー名の中には、全角文字や半角空白文字、半角記号を含めることはできません。</li>
+<li>アンカー設定は、他のインライン要素の子要素になることができます。</li>
+<li>アンカー設定は、他のインライン要素を子要素にすることができます。</li>
+</ul>
+<h3 id="カウンタ表示">カウンタ表示</h3>
+<pre><code>&amp;counter;
+&amp;counter(オプション);</code></pre>
+<p>行中で &amp;counter
+を記述するとそのページにアクセスした人の数を表示することができます。</p>
+<ul>
+<li>&amp;counter
+には次のオプションを指定できます。オプションを省略した場合はtotalが指定されたものとみなされます。</li>
+</ul>
+<pre><code>today</code></pre>
+<h2 id="今日のアクセス数を表示します">-
+今日のアクセス数を表示します。</h2>
+<pre><code>yesterday</code></pre>
+<h2 id="昨日のアクセス数を表示します">-
+昨日のアクセス数を表示します。</h2>
+<pre><code>total</code></pre>
+<pre><code>- アクセス総数を表示します。</code></pre>
+<ul>
+<li>カウンタ表示は、他のインライン要素の子要素になることができます。</li>
+<li>カウンタ表示は、他のインライン要素を子要素にはできません。</li>
+</ul>
+<h3 id="オンライン表示">オンライン表示</h3>
+<pre><code>&amp;online;</code></pre>
+<p>行中で &amp;online
+を記述すると現在アクセス中の人数を表示することができます。</p>
+<ul>
+<li>オンライン表示は、他のインライン要素の子要素になることができます。</li>
+<li>オンライン表示は、他のインライン要素を子要素にはできません。</li>
+</ul>
+<h3 id="バージョン表示">バージョン表示</h3>
+<pre><code>&amp;version;</code></pre>
+<p>行中で &amp;version
+を記述するとPukiWikiのバージョンを表示することができます。</p>
+<ul>
+<li>バージョン表示は、他のインライン要素の子要素になることができます。</li>
+<li>バージョン表示は、他のインライン要素を子要素にはできません。</li>
+</ul>
+<h3 id="wikiname">WikiName</h3>
+<pre><code>WikiName</code></pre>
+<p>行中で、1つ以上の大文字→1つ以上の小文字→1つ以上の大文字→1つ以上の小文字の組合わせからなる半角//文字列はWikiNameになります。</p>
+<ul>
+<li><p>WikiNameの中には、全角文字や半角空白文字、記号、数字を含めることはできません。</p></li>
+<li><p>WikiNameは、PukiWiki内のページ名になります。すでに存在するページであればそのページへのリンクが自動的に貼られます。存在しない場合はWikiNameの後ろに?が自動的に付き、そのページを新規作成するためのリンクが貼られます。</p></li>
+<li><p>WikiNameは、他のインライン要素の子要素になることができます。</p></li>
+<li><p>WikiNameは、他のインライン要素を子要素にはできません。</p></li>
+</ul>
+<h3 id="ページ名">ページ名</h3>
+<pre><code>[[ぷきうぃき]]</code></pre>
+<p>行中で [[ と ]] で囲まれた文字列はページ名になります。</p>
+<ul>
+<li>ページ名の中には、全角文字、記号、数字、半角空白文字を含めることができます。</li>
+<li>ページ名の中には、“#&amp;&lt;&gt; を含めることはできません。</li>
+<li>すでに存在するページであればそのページへのリンクが自動的に貼られます。存在しない場合はページ名の後ろに?が自動的に付き、そのページを新規作成するためのリンクが貼られます。</li>
+</ul>
+<pre><code>[[ページ名#アンカー名]]</code></pre>
+<ul>
+<li><p>ページ名にアンカー名をつけることもできます。</p></li>
+<li><p>ページ名は、他のインライン要素の子要素になることができます。</p></li>
+<li><p>ページ名は、他のインライン要素を子要素にはできません。</p></li>
+</ul>
+<h3 id="interwiki">InterWiki</h3>
+<pre><code>[[InterWikiName:ページ名]]</code></pre>
+<p>行中のページ名形式の文字列の中で、:
+で2つの文字列を区切るとInterWikiになります。:の前にはInterWikiNameのページで定義したInterWikiNameを、:
+の後ろにはページ名を記述します。</p>
+<pre><code>[[InterWikiName:ページ名#アンカー名]]</code></pre>
+<ul>
+<li><p>ページ名の後ろにアンカー名をつけることもできます。</p></li>
+<li><p>InterWikiNameの中には、全角文字を含めることができます。</p></li>
+<li><p>InterWikiNameの中には、半角空白文字を含めるができます。</p></li>
+<li><p>InterWikiは、他のインライン要素の子要素になることができます。</p></li>
+<li><p>InterWikiは、他のインライン要素を子要素にはできません。</p></li>
+</ul>
+<h3 id="リンク">リンク</h3>
+<pre><code>[[リンク名:URL]]</code></pre>
+<p>行中のInterWikiNameの形式の文字列の中で、: の前に任意のリンク名を、:
+の後ろにURLを記述すると、そのリンク名でURLに対するリンクを貼ることができます。</p>
+<ul>
+<li>リンク名には、全角文字や半角空白文字を含めることができます。メールアドレスを指定する場合は、mailto:を書かずにアドレスだけを記述します。</li>
+</ul>
+<pre><code>http://www.example.com/
+https://www.example.com/
+ftp://ftp.example.com/
+news://news.example.com/
+foo@example.com</code></pre>
+<ul>
+<li><p>行中に直接、URLを記述した場合は自動的にそのURLに対するリンクが貼られます。</p></li>
+<li><p>記述したURLが画像ファイルである場合は、その画像を表示します。</p></li>
+<li><p>リンクは、他のインライン要素の子要素になることができます。</p></li>
+<li><p>リンクは、他のインライン要素を子要素にはできません。</p></li>
+</ul>
+<h3 id="エイリアス">エイリアス</h3>
+<pre><code>[[エイリアス名&gt;ページ名]]</code></pre>
+<p>行中のページ名形式の文字列の中で、&gt;
+で2つの文字列を区切るとエイリアスになります。 &gt;
+の前にはエイリアス名を、&gt; の後ろにはページ名を記述します。</p>
+<p>エイリアスはPukiWiki内のページ名とは別のエイリアス名で、指定したページへのリンクを貼ります。</p>
+<pre><code>[[エイリアス名&gt;ページ名#アンカー名]]
+[[エイリアス名&gt;#アンカー名]]</code></pre>
+<ul>
+<li>ページ名にアンカー名を付け加えてアンカーへのリンクを貼ることができます。ページ名とアンカー名の間には#をつけます。カレントページのアンカーへリンクを貼る場合はページ名を省略することができます。</li>
+</ul>
+<pre><code>[[エイリアス名&gt;http://www.example.com/]]
+[[エイリアス名&gt;https://www.example.com/]]
+[[エイリアス名&gt;ftp://ftp.example.com/]]
+[[エイリアス名&gt;news://news.example.com/]]
+[[エイリアス名&gt;foo@example.com]]
+[[エイリアス名&gt;InterWikiName:ページ名]]
+[[エイリアス名&gt;InterWikiName:ページ名#アンカー名]]</code></pre>
+<ul>
+<li>エイリアスをURLやInterWikiと組み合わせることもできます。</li>
+</ul>
+<pre><code>[[エイリアス名:http://www.example.com/]]
+[[エイリアス名:https://www.example.com/]]
+[[エイリアス名:ftp://ftp.example.com/]]
+[[エイリアス名:news://news.example.com/]]
+[[エイリアス名:foo@example.com]]</code></pre>
+<ul>
+<li><p>URLを指定する場合は、&gt;の代わりに:も使用できます。</p></li>
+<li><p>エイリアス名の中には、全角文字を含めることができます。</p></li>
+<li><p>エイリアス名の中には、半角空白文字を含めることができます。</p></li>
+<li><p>階層化されたページでは、ページ名を相対指定することができます。</p></li>
+<li><p>エイリアスは、他のインライン要素の子要素になることができます。</p></li>
+<li><p>エイリアスは、他のインライン要素を子要素にできます。</p></li>
+</ul>
+<h3 id="タブコード">タブコード</h3>
+<pre><code>&amp;t;</code></pre>
+<p>行中で &amp;t; と書くと、タブコードに置換されます。</p>
+<p>通常、フォーム内ではキーボードからタブコードを直接入力できない((クリップボードからの貼り付けの場合はタブコードを直接入力できます。))ので、タブコードを入力したい位置に&amp;t;を記述すると、保存時にタブコードに置換します。</p>
+<ul>
+<li>タブコードは、記事が書き込まれるときに置換されて記録されます。</li>
+<li>タブコードは、他のインライン要素の子要素になることができます。</li>
+<li>タブコードは、他のインライン要素を子要素にはできません。</li>
+</ul>
+<h3 id="ページ名置換文字">ページ名置換文字</h3>
+<pre><code>&amp;page;
+&amp;fpage;</code></pre>
+<p>行中で &amp;page; 及び &amp;fpage;
+と書くと、編集中のページ名に置換されます。ページ名が階層化されたページで「hogehoge/hoge」となっている場合、
+&amp;page; は「hoge」に、 &amp;fpage;
+は「hogehoge/hoge」に置換されます。階層化されていないページでは、
+&amp;page; も &amp;fpage; も同じになります。</p>
+<ul>
+<li>ページ名置換文字は、記事が書き込まれるときに置換されて記録されます。</li>
+<li>ページ名置換文字は、他のインライン要素の子要素になることができます。</li>
+<li>ページ名置換文字は、他のインライン要素を子要素にはできません。</li>
+</ul>
+<h3 id="日時置換文字">日時置換文字</h3>
+<pre><code>&amp;date;
+&amp;time;
+&amp;now;</code></pre>
+<ul>
+<li>行中で &amp;date; と書くと、更新時の日付に置換されます</li>
+<li>行中で &amp;time; と書くと、更新時の時刻に置換されます</li>
+<li>行中で &amp;now; と書くと、更新時の日時に置換されます</li>
+</ul>
+<pre><code>date?
+time?
+now?</code></pre>
+<ul>
+<li><p>PukiWiki 1.3系との後方互換性のために、 date?、 time?、 now?
+についても使用できるようにしてあります。</p></li>
+<li><p>&amp;date;、 &amp;time;、
+&amp;now;は、記事が書き込まれるときに置換されて記録されます。</p></li>
+<li><p>&amp;date;、 &amp;time;、
+&amp;now;は、他のインライン要素の子要素になることができます。</p></li>
+<li><p>&amp;date;、 &amp;time;、
+&amp;now;は、他のインライン要素を子要素にはできません。</p></li>
+</ul>
+<pre><code>&amp;_date;
+&amp;_time;
+&amp;_now;</code></pre>
+<ul>
+<li>行中で &amp;_date;
+と書くと、表示時の日付に置換されて出力されます。</li>
+<li>行中で &amp;_time;
+と書くと、表示時の時刻に置換されて出力されます。</li>
+<li>行中で &amp;_now;
+と書くと、表示時の日時に置換されて出力されます。</li>
+</ul>
+<pre><code>&amp;lastmod;
+&amp;lastmod(ページ名);</code></pre>
+<ul>
+<li><p>行中で &amp;lastmod;
+と書くと、そのページの最終更新日時に置換されて出力されます。</p></li>
+<li><p>ページ名を指定すると、その指定されたページの最終更新日時に置換されて出力されます。</p></li>
+<li><p>&amp;_date;、 &amp;_time;、 &amp;_now;、
+&amp;lastmod;は、記事が表示されるときに置換されて出力されます。</p></li>
+<li><p>&amp;_date;、 &amp;_time;、 &amp;_now;、
+&amp;lastmod;は、他のインライン要素の子要素になることができます。</p></li>
+<li><p>&amp;_date;、 &amp;_time;、 &amp;_now;、
+&amp;lastmod;は、他のインライン要素を子要素にはできません。</p></li>
+</ul>
+<h3 id="文字参照文字">文字参照文字</h3>
+<p>文字参照は、SGMLで定義されている文字参照文字(&amp;copy;や&amp;reg;など)のほか、下記の独自の文字参照文字が使用できます。</p>
+<pre><code>&amp;heart;
+&amp;smile;
+&amp;bigsmile;
+&amp;huh;
+&amp;oh;
+&amp;wink;
+&amp;sad;
+&amp;worried;</code></pre>
+<ul>
+<li><p>行中で&amp;heart;と書くと、ハートマーク &amp;heart;
+に置換されて出力されます。</p></li>
+<li><p>行中で&amp;smile;と書くと、 ⌣ に置換されて出力されます。</p></li>
+<li><p>行中で&amp;bigsmile;と書くと、 &amp;bigsmile;
+に置換されて出力されます。</p></li>
+<li><p>行中で&amp;huh;と書くと、 &amp;huh;
+に置換されて出力されます。</p></li>
+<li><p>行中で&amp;oh;と書くと、 &amp;oh;
+に置換されて出力されます。</p></li>
+<li><p>行中で&amp;wink;と書くと、 &amp;wink;
+に置換されて出力されます。</p></li>
+<li><p>行中で&amp;sad;と書くと、 &amp;sad;
+に置換されて出力されます。</p></li>
+<li><p>行中で&amp;worried;と書くと、 &amp;worried;
+に置換されて出力されます。</p></li>
+<li><p>文字参照文字は、表示されるときに置換されます。</p></li>
+<li><p>文字参照文字は、他のインライン要素の子要素になることができます。</p></li>
+<li><p>文字参照文字は、他のインライン要素を子要素にはできません。</p></li>
+</ul>
+<h3 id="数値参照文字">数値参照文字</h3>
+<pre><code>&amp;#10進数;
+&amp;#x16進数;</code></pre>
+<p>行中で &amp;# と ; の間に10進数を、&amp;#x と
+;の間に16進数を書くと、Unicodeを数値参照して表示します。キーボードから直接入力できない文字やJIS第3水準・第4水準の文字などの表示に使用します。たとえば、内田百&amp;#38290;と入力すると、内田百閒と表示されます。</p>
+<ul>
+<li>数値参照文字は、表示されるときに置換されます。</li>
+<li>数値参照文字は、他のインライン要素の子要素になることができます。</li>
+<li>数値参照文字は、他のインライン要素を子要素にはできません。</li>
+<li>16進数は半角小文字で指定する必要があります(XHTML 1.0
+第2版から小文字に限定されました)。</li>
+</ul>
+<h2 id="その他">その他</h2>
+<h3 id="コメント行">コメント行</h3>
+<pre><code>// コメント</code></pre>
+<p>行頭で //
+を指定すると、コメント行になります。コメント行は出力されない行です。</p>
+<ul>
+<li>コメント行は、他の要素と無関係に行単位でどの位置にも記述できます。</li>
+<li>コメント行は、前後の他の要素に何ら影響を及ぼしません。</li>
+</ul>
+</body>
+</html>
